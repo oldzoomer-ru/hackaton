@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: hackaton
+
+  # PostgreSQL Database (JDBC)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hackaton
+    username: postgres
+    password: postgres
+  sql:
+    init:
+      mode: never
+
+  # Redis (for caching if needed)
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  # Jackson
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+  # Enable scheduling
+  task:scheduling:
+    timezone: Europe/Moscow
+
+# Telegram Bot Configuration
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN}
+    username: ${TELEGRAM_BOT_USERNAME}
+    # Long polling settings
+    updates-polling:
+      enabled: true
+      timeout: 10
+      max-workers: 4
+
+# Logging
+logging:
+  level:
+    ru.oldzoomer.hackaton: DEBUG
+    org.telegram: INFO
