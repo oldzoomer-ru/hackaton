@@ -81,7 +81,7 @@ ENV APP_HOME=$BUILD_HOME
 #
 # Copy the native executable
 #
-COPY --from=build-image $APP_HOME/hackaton/build/native/nativeCompile/hackaton /app
+COPY --from=build-image $APP_HOME/build/native/nativeCompile/hackaton /app
 
 #
 # The command to run when the container starts.
