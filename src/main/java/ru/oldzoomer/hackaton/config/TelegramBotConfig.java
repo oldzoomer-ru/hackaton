@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.telegram.telegrambots.abilitybots.api.bot.AbilityBot;
 import org.telegram.telegrambots.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
@@ -23,6 +24,7 @@ import ru.oldzoomer.hackaton.bot.HackathonAbilityBot;
  */
 @Configuration
 @Log4j2
+@Profile("!test")
 public class TelegramBotConfig {
 
     private final BotConfig botConfig;

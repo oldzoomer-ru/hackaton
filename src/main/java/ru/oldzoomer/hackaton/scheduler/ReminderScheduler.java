@@ -2,6 +2,7 @@ package ru.oldzoomer.hackaton.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,7 @@ import java.util.Comparator;
 @Component
 @Log4j2
 @RequiredArgsConstructor
+@Profile("!test")
 public class ReminderScheduler {
 
     private final HackathonService hackathonService;

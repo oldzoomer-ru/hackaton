@@ -1,6 +1,7 @@
 package ru.oldzoomer.hackaton.bot;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.abilitybots.api.bot.AbilityBot;
 import org.telegram.telegrambots.abilitybots.api.objects.Ability;
@@ -33,6 +34,7 @@ import static org.telegram.telegrambots.abilitybots.api.objects.Ability.builder;
  */
 @Component
 @Log4j2
+@Profile("!test")
 public class HackathonAbilityBot extends AbilityBot implements AbilityExtension {
 
     private final HackathonService hackathonService;
