@@ -4,27 +4,20 @@ spring:
 
   # PostgreSQL Database (JDBC)
   datasource:
-    url: jdbc:postgresql://localhost:5432/hackaton
-    username: postgres
-    password: postgres
-  sql:
-    init:
-      mode: never
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
 
   # Redis (for caching if needed)
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${SPRING_DATA_REDIS_HOST}
+      port: ${SPRING_DATA_REDIS_HOST}
 
   # Jackson
   jackson:
     serialization:
       write-dates-as-timestamps: false
-
-  # Enable scheduling
-  task:scheduling:
-    timezone: Europe/Moscow
 
 # Telegram Bot Configuration
 telegram:
@@ -32,9 +25,3 @@ telegram:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
     proxy-url: ${TELEGRAM_PROXY_URL}
-
-# Logging
-logging:
-  level:
-    ru.oldzoomer.hackaton: DEBUG
-    org.telegram: INFO

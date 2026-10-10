@@ -313,7 +313,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
     }
 
     /** Run every day at 10:00 Moscow time — send daily summary to all users */
-    @Scheduled(cron = "0 0 10 * * *", zone = "Europe/Moscow")
+    @Scheduled(cron = "0 0 10 * * *")
     public void sendDailySummaries() {
         log.info("Running daily summaries at 10:00 MSK");
         List<User> users = userRepository.findRecentUsers();
@@ -363,7 +363,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
     }
 
     /** Check for overdue tasks and ping daily */
-    @Scheduled(cron = "0 30 10 * * *", zone = "Europe/Moscow")
+    @Scheduled(cron = "0 30 10 * * *")
     public void checkOverdueTasks() {
         log.info("Checking overdue tasks");
         List<Task> overdue = taskService.findOverdue();

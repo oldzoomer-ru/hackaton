@@ -15,6 +15,7 @@ services:
       - SPRING_DATA_REDIS_PORT=6379
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
       - TELEGRAM_BOT_USERNAME=${TELEGRAM_BOT_USERNAME:-}
+      - TELEGRAM_PROXY_URL=${TELEGRAM_PROXY_URL}
     depends_on:
       db:
         condition: service_healthy
