@@ -201,6 +201,15 @@
       ]
     },
     {
+      "type": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "com.zaxxer.hikari.HikariConfig"
     },
     {
@@ -216,16 +225,10 @@
       ]
     },
     {
-      "type": "com.zaxxer.hikari.pool.HikariProxyPreparedStatement"
-    },
-    {
       "type": "com.zaxxer.hikari.pool.PoolBase"
     },
     {
       "type": "com.zaxxer.hikari.pool.PoolEntry"
-    },
-    {
-      "type": "com.zaxxer.hikari.pool.ProxyPreparedStatement"
     },
     {
       "type": "com.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry[]"
@@ -241,9 +244,6 @@
     },
     {
       "type": "io.micrometer.core.instrument.MeterRegistry"
-    },
-    {
-      "type": "io.micrometer.observation.Observation"
     },
     {
       "type": "io.r2dbc.spi.ConnectionFactory"
@@ -310,6 +310,9 @@
     },
     {
       "type": "java.beans.Introspector"
+    },
+    {
+      "type": "java.beans.PropertyVetoException"
     },
     {
       "type": "java.io.Closeable"
@@ -417,6 +420,12 @@
           "parameterTypes": []
         }
       ]
+    },
+    {
+      "type": "java.lang.ObjectBeanInfo"
+    },
+    {
+      "type": "java.lang.ObjectCustomizer"
     },
     {
       "type": "java.lang.Object[]"
@@ -564,6 +573,9 @@
       "type": "java.net.Proxy"
     },
     {
+      "type": "java.net.Proxy$Type"
+    },
+    {
       "type": "java.net.SocketAddress"
     },
     {
@@ -587,6 +599,12 @@
       "type": "java.security.KeyStoreSpi"
     },
     {
+      "type": "java.security.interfaces.ECPrivateKey"
+    },
+    {
+      "type": "java.security.interfaces.ECPublicKey"
+    },
+    {
       "type": "java.security.interfaces.RSAPrivateKey"
     },
     {
@@ -602,9 +620,6 @@
       "type": "java.sql.ResultSet"
     },
     {
-      "type": "java.sql.SQLException"
-    },
-    {
       "type": "java.sql.Statement[]"
     },
     {
@@ -612,128 +627,6 @@
     },
     {
       "type": "java.sql.Timestamp"
-    },
-    {
-      "type": "java.sql.Types",
-      "fields": [
-        {
-          "name": "ARRAY"
-        },
-        {
-          "name": "BIGINT"
-        },
-        {
-          "name": "BINARY"
-        },
-        {
-          "name": "BIT"
-        },
-        {
-          "name": "BLOB"
-        },
-        {
-          "name": "BOOLEAN"
-        },
-        {
-          "name": "CHAR"
-        },
-        {
-          "name": "CLOB"
-        },
-        {
-          "name": "DATALINK"
-        },
-        {
-          "name": "DATE"
-        },
-        {
-          "name": "DECIMAL"
-        },
-        {
-          "name": "DISTINCT"
-        },
-        {
-          "name": "DOUBLE"
-        },
-        {
-          "name": "FLOAT"
-        },
-        {
-          "name": "INTEGER"
-        },
-        {
-          "name": "JAVA_OBJECT"
-        },
-        {
-          "name": "LONGNVARCHAR"
-        },
-        {
-          "name": "LONGVARBINARY"
-        },
-        {
-          "name": "LONGVARCHAR"
-        },
-        {
-          "name": "NCHAR"
-        },
-        {
-          "name": "NCLOB"
-        },
-        {
-          "name": "NULL"
-        },
-        {
-          "name": "NUMERIC"
-        },
-        {
-          "name": "NVARCHAR"
-        },
-        {
-          "name": "OTHER"
-        },
-        {
-          "name": "REAL"
-        },
-        {
-          "name": "REF"
-        },
-        {
-          "name": "REF_CURSOR"
-        },
-        {
-          "name": "ROWID"
-        },
-        {
-          "name": "SMALLINT"
-        },
-        {
-          "name": "SQLXML"
-        },
-        {
-          "name": "STRUCT"
-        },
-        {
-          "name": "TIME"
-        },
-        {
-          "name": "TIMESTAMP"
-        },
-        {
-          "name": "TIMESTAMP_WITH_TIMEZONE"
-        },
-        {
-          "name": "TIME_WITH_TIMEZONE"
-        },
-        {
-          "name": "TINYINT"
-        },
-        {
-          "name": "VARBINARY"
-        },
-        {
-          "name": "VARCHAR"
-        }
-      ]
     },
     {
       "type": "java.sql.Wrapper"
@@ -757,7 +650,13 @@
       "type": "java.util.AbstractList"
     },
     {
-      "type": "java.util.ArrayList"
+      "type": "java.util.ArrayList",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "java.util.Collection"
@@ -775,6 +674,9 @@
       "type": "java.util.Map"
     },
     {
+      "type": "java.util.Objects"
+    },
+    {
       "type": "java.util.Optional"
     },
     {
@@ -790,16 +692,7 @@
       "type": "java.util.concurrent.Executor"
     },
     {
-      "type": "java.util.concurrent.Executors$RunnableAdapter"
-    },
-    {
-      "type": "java.util.concurrent.FutureTask"
-    },
-    {
       "type": "java.util.concurrent.ScheduledExecutorService"
-    },
-    {
-      "type": "java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask"
     },
     {
       "type": "java.util.concurrent.ThreadFactory"
@@ -824,6 +717,27 @@
     },
     {
       "type": "java.util.logging.LogManager"
+    },
+    {
+      "type": "java.util.stream.AbstractPipeline"
+    },
+    {
+      "type": "java.util.stream.ForEachOps$ForEachOp"
+    },
+    {
+      "type": "java.util.stream.ForEachOps$ForEachOp$OfRef"
+    },
+    {
+      "type": "java.util.stream.ReferencePipeline"
+    },
+    {
+      "type": "java.util.stream.ReferencePipeline$2$1"
+    },
+    {
+      "type": "java.util.stream.ReferencePipeline$3$1"
+    },
+    {
+      "type": "java.util.stream.Streams$StreamBuilderImpl"
     },
     {
       "type": "javax.annotation.Nonnull"
@@ -859,9 +773,6 @@
       "type": "jdk.internal.misc.Unsafe"
     },
     {
-      "type": "jdk.internal.reflect.DirectMethodHandleAccessor"
-    },
-    {
       "type": "kotlin.Metadata"
     },
     {
@@ -890,6 +801,1535 @@
     },
     {
       "type": "kotlinx.serialization.Serializable"
+    },
+    {
+      "type": "liquibase.AbstractExtensibleObject"
+    },
+    {
+      "type": "liquibase.AbstractExtensibleObjectBeanInfo"
+    },
+    {
+      "type": "liquibase.AbstractExtensibleObjectCustomizer"
+    },
+    {
+      "type": "liquibase.ExtensibleObject"
+    },
+    {
+      "type": "liquibase.GlobalConfiguration"
+    },
+    {
+      "type": "liquibase.analytics.AnalyticsFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.analytics.LiquibaseAnalyticsListener"
+    },
+    {
+      "type": "liquibase.analytics.NoOpAnalyticsListener"
+    },
+    {
+      "type": "liquibase.analytics.configuration.AnalyticsArgs"
+    },
+    {
+      "type": "liquibase.analytics.configuration.AnalyticsConfigurationFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.analytics.configuration.LiquibaseRemoteAnalyticsConfiguration"
+    },
+    {
+      "type": "liquibase.change.AbstractChange"
+    },
+    {
+      "type": "liquibase.change.AbstractChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.AbstractChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.AbstractSQLChange",
+      "methods": [
+        {
+          "name": "setSplitStatements",
+          "parameterTypes": [
+            "java.lang.Boolean"
+          ]
+        },
+        {
+          "name": "setStripComments",
+          "parameterTypes": [
+            "java.lang.Boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "liquibase.change.AbstractSQLChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.AbstractSQLChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.AbstractTableChange"
+    },
+    {
+      "type": "liquibase.change.AbstractTableChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.AbstractTableChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.Change"
+    },
+    {
+      "type": "liquibase.change.ChangeFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.change.ChangeWithColumns"
+    },
+    {
+      "type": "liquibase.change.DatabaseChange"
+    },
+    {
+      "type": "liquibase.change.DbmsTargetedChange"
+    },
+    {
+      "type": "liquibase.change.ReplaceIfExists"
+    },
+    {
+      "type": "liquibase.change.core.AbstractModifyDataChange"
+    },
+    {
+      "type": "liquibase.change.core.AbstractModifyDataChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AbstractModifyDataChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddAutoIncrementChange"
+    },
+    {
+      "type": "liquibase.change.core.AddAutoIncrementChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddAutoIncrementChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddColumnChange"
+    },
+    {
+      "type": "liquibase.change.core.AddColumnChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddColumnChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddDefaultValueChange"
+    },
+    {
+      "type": "liquibase.change.core.AddDefaultValueChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddDefaultValueChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddForeignKeyConstraintChange"
+    },
+    {
+      "type": "liquibase.change.core.AddForeignKeyConstraintChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddForeignKeyConstraintChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddLookupTableChange"
+    },
+    {
+      "type": "liquibase.change.core.AddLookupTableChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddLookupTableChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddNotNullConstraintChange"
+    },
+    {
+      "type": "liquibase.change.core.AddNotNullConstraintChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddNotNullConstraintChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddPrimaryKeyChange"
+    },
+    {
+      "type": "liquibase.change.core.AddPrimaryKeyChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddPrimaryKeyChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AddUniqueConstraintChange"
+    },
+    {
+      "type": "liquibase.change.core.AddUniqueConstraintChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AddUniqueConstraintChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.AlterSequenceChange"
+    },
+    {
+      "type": "liquibase.change.core.AlterSequenceChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.AlterSequenceChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.CreateIndexChange"
+    },
+    {
+      "type": "liquibase.change.core.CreateIndexChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.CreateIndexChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.CreateProcedureChange"
+    },
+    {
+      "type": "liquibase.change.core.CreateProcedureChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.CreateProcedureChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.CreateSequenceChange"
+    },
+    {
+      "type": "liquibase.change.core.CreateSequenceChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.CreateSequenceChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.CreateTableChange"
+    },
+    {
+      "type": "liquibase.change.core.CreateTableChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.CreateTableChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.CreateViewChange"
+    },
+    {
+      "type": "liquibase.change.core.CreateViewChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.CreateViewChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DeleteDataChange"
+    },
+    {
+      "type": "liquibase.change.core.DeleteDataChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DeleteDataChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropAllForeignKeyConstraintsChange"
+    },
+    {
+      "type": "liquibase.change.core.DropAllForeignKeyConstraintsChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropAllForeignKeyConstraintsChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropColumnChange"
+    },
+    {
+      "type": "liquibase.change.core.DropColumnChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropColumnChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropDefaultValueChange"
+    },
+    {
+      "type": "liquibase.change.core.DropDefaultValueChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropDefaultValueChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropForeignKeyConstraintChange"
+    },
+    {
+      "type": "liquibase.change.core.DropForeignKeyConstraintChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropForeignKeyConstraintChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropIndexChange"
+    },
+    {
+      "type": "liquibase.change.core.DropIndexChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropIndexChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropNotNullConstraintChange"
+    },
+    {
+      "type": "liquibase.change.core.DropNotNullConstraintChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropNotNullConstraintChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropPrimaryKeyChange"
+    },
+    {
+      "type": "liquibase.change.core.DropPrimaryKeyChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropPrimaryKeyChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropProcedureChange"
+    },
+    {
+      "type": "liquibase.change.core.DropProcedureChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropProcedureChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropSequenceChange"
+    },
+    {
+      "type": "liquibase.change.core.DropSequenceChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropSequenceChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropTableChange"
+    },
+    {
+      "type": "liquibase.change.core.DropTableChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropTableChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropUniqueConstraintChange"
+    },
+    {
+      "type": "liquibase.change.core.DropUniqueConstraintChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropUniqueConstraintChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.DropViewChange"
+    },
+    {
+      "type": "liquibase.change.core.DropViewChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.DropViewChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.EmptyChange"
+    },
+    {
+      "type": "liquibase.change.core.EmptyChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.EmptyChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.ExecuteShellCommandChange"
+    },
+    {
+      "type": "liquibase.change.core.ExecuteShellCommandChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.ExecuteShellCommandChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.InsertDataChange"
+    },
+    {
+      "type": "liquibase.change.core.InsertDataChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.InsertDataChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.LoadDataChange"
+    },
+    {
+      "type": "liquibase.change.core.LoadDataChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.LoadDataChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.LoadUpdateDataChange"
+    },
+    {
+      "type": "liquibase.change.core.LoadUpdateDataChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.LoadUpdateDataChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.MergeColumnChange"
+    },
+    {
+      "type": "liquibase.change.core.MergeColumnChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.MergeColumnChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.ModifyDataTypeChange"
+    },
+    {
+      "type": "liquibase.change.core.ModifyDataTypeChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.ModifyDataTypeChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.OutputChange"
+    },
+    {
+      "type": "liquibase.change.core.OutputChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.OutputChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.RawSQLChange"
+    },
+    {
+      "type": "liquibase.change.core.RawSQLChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.RawSQLChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.RenameColumnChange"
+    },
+    {
+      "type": "liquibase.change.core.RenameColumnChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.RenameColumnChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.RenameSequenceChange"
+    },
+    {
+      "type": "liquibase.change.core.RenameSequenceChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.RenameSequenceChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.RenameTableChange"
+    },
+    {
+      "type": "liquibase.change.core.RenameTableChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.RenameTableChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.RenameViewChange"
+    },
+    {
+      "type": "liquibase.change.core.RenameViewChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.RenameViewChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.SQLFileChange",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setPath",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setRelativeToChangelogFile",
+          "parameterTypes": [
+            "java.lang.Boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "liquibase.change.core.SQLFileChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.SQLFileChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.SetColumnRemarksChange"
+    },
+    {
+      "type": "liquibase.change.core.SetColumnRemarksChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.SetColumnRemarksChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.SetTableRemarksChange"
+    },
+    {
+      "type": "liquibase.change.core.SetTableRemarksChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.SetTableRemarksChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.StopChange"
+    },
+    {
+      "type": "liquibase.change.core.StopChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.StopChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.TagDatabaseChange"
+    },
+    {
+      "type": "liquibase.change.core.TagDatabaseChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.TagDatabaseChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.core.UpdateDataChange"
+    },
+    {
+      "type": "liquibase.change.core.UpdateDataChangeBeanInfo"
+    },
+    {
+      "type": "liquibase.change.core.UpdateDataChangeCustomizer"
+    },
+    {
+      "type": "liquibase.change.custom.CustomChangeWrapper"
+    },
+    {
+      "type": "liquibase.change.custom.CustomChangeWrapperBeanInfo"
+    },
+    {
+      "type": "liquibase.change.custom.CustomChangeWrapperCustomizer"
+    },
+    {
+      "type": "liquibase.changelog.ChangeLogHistoryServiceFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.changelog.FastCheckService",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.changelog.MockChangeLogHistoryService"
+    },
+    {
+      "type": "liquibase.changelog.StandardChangeLogHistoryService",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.changelog.visitor.StandardValidatingVisitorGenerator"
+    },
+    {
+      "type": "liquibase.changelog.visitor.ValidatingVisitorGeneratorFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.changeset.StandardChangeSetService"
+    },
+    {
+      "type": "liquibase.command.CommandFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.CalculateChecksumCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ChangelogSyncCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ChangelogSyncSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ChangelogSyncToTagCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ChangelogSyncToTagSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ClearChecksumsCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.DbDocCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.DiffChangelogCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.DiffCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.DropAllCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ExecuteSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.FutureRollbackCountSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.FutureRollbackFromTagSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.FutureRollbackSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.GenerateChangelogCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.HistoryCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.InternalSnapshotCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ListLocksCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.LpmCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.MarkNextChangesetRanCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.MarkNextChangesetRanSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ReleaseLocksCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.RollbackCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.RollbackCountCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.RollbackCountSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.RollbackSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.RollbackToDateCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.RollbackToDateSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.SnapshotCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.SnapshotReferenceCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.StartH2CommandStep"
+    },
+    {
+      "type": "liquibase.command.core.StatusCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.StopH2CommandStep"
+    },
+    {
+      "type": "liquibase.command.core.TagCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.TagExistsCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UnexpectedChangesetsCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UpdateCommandStep",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.UpdateCountCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UpdateCountSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UpdateSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UpdateTestingRollbackCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UpdateToTagCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.UpdateToTagSqlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.ValidateCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.ChangeExecListenerCommandStep",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.helpers.DatabaseChangelogCommandStep",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.helpers.DbUrlConnectionArgumentsCommandStep",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.helpers.DbUrlConnectionCommandStep",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.helpers.DiffArgumentsCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.DiffOutputControlCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.LockServiceCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.OutputWriterCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.PreCompareCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.ReferenceDatabaseOutputWriterCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.ReferenceDbUrlConnectionCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.helpers.ShowSummaryArgument",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.command.core.init.InitCopyCommandStep"
+    },
+    {
+      "type": "liquibase.command.core.init.InitProjectCommandStep"
+    },
+    {
+      "type": "liquibase.configuration.ConfiguredValueModifierFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.configuration.LiquibaseConfiguration",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.configuration.core.DeprecatedConfigurationValueProvider"
+    },
+    {
+      "type": "liquibase.configuration.core.EnvironmentValueProvider"
+    },
+    {
+      "type": "liquibase.configuration.core.ScopeValueProvider"
+    },
+    {
+      "type": "liquibase.configuration.core.SystemPropertyValueProvider"
+    },
+    {
+      "type": "liquibase.database.LiquibaseTableNamesFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.database.StandardLiquibaseTableNames"
+    },
+    {
+      "type": "liquibase.database.core.CockroachDatabase"
+    },
+    {
+      "type": "liquibase.database.core.DB2Database"
+    },
+    {
+      "type": "liquibase.database.core.Db2zDatabase"
+    },
+    {
+      "type": "liquibase.database.core.DerbyDatabase"
+    },
+    {
+      "type": "liquibase.database.core.EnterpriseDBDatabase"
+    },
+    {
+      "type": "liquibase.database.core.FirebirdDatabase"
+    },
+    {
+      "type": "liquibase.database.core.H2Database"
+    },
+    {
+      "type": "liquibase.database.core.HsqlDatabase"
+    },
+    {
+      "type": "liquibase.database.core.InformixDatabase"
+    },
+    {
+      "type": "liquibase.database.core.Ingres9Database"
+    },
+    {
+      "type": "liquibase.database.core.MSSQLDatabase"
+    },
+    {
+      "type": "liquibase.database.core.MSSQLDatabase$SpecificConfiguration"
+    },
+    {
+      "type": "liquibase.database.core.MariaDBDatabase"
+    },
+    {
+      "type": "liquibase.database.core.MockDatabase"
+    },
+    {
+      "type": "liquibase.database.core.MySQLDatabase"
+    },
+    {
+      "type": "liquibase.database.core.OracleDatabase"
+    },
+    {
+      "type": "liquibase.database.core.PostgresDatabase",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.database.core.SQLiteDatabase"
+    },
+    {
+      "type": "liquibase.database.core.SnowflakeDatabase"
+    },
+    {
+      "type": "liquibase.database.core.SybaseASADatabase"
+    },
+    {
+      "type": "liquibase.database.core.SybaseDatabase"
+    },
+    {
+      "type": "liquibase.database.core.UnsupportedDatabase"
+    },
+    {
+      "type": "liquibase.database.jvm.JdbcConnectionPatterns"
+    },
+    {
+      "type": "liquibase.diff.compare.core.CatalogComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.ColumnComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.DefaultDatabaseObjectComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.ForeignKeyComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.IndexComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.MSSQLViewComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.PrimaryKeyComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.SchemaComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.TableComparator"
+    },
+    {
+      "type": "liquibase.diff.compare.core.UniqueConstraintComparator"
+    },
+    {
+      "type": "liquibase.executor.ExecutorService",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.executor.jvm.JdbcExecutor",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.executor.jvm.SnowflakeJdbcExecutor"
+    },
+    {
+      "type": "liquibase.integration.commandline.LiquibaseCommandLineConfiguration"
+    },
+    {
+      "type": "liquibase.integration.spring.Customizer"
+    },
+    {
+      "type": "liquibase.integration.spring.SpringLiquibase"
+    },
+    {
+      "type": "liquibase.license.LicenseServiceFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.license.LicenseTrackingArgs"
+    },
+    {
+      "type": "liquibase.license.OSSLicenseService"
+    },
+    {
+      "type": "liquibase.lockservice.LockServiceImpl"
+    },
+    {
+      "type": "liquibase.lockservice.MockLockService"
+    },
+    {
+      "type": "liquibase.lockservice.OfflineLockService"
+    },
+    {
+      "type": "liquibase.lockservice.StandardLockService",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.logging.core.BufferedLogService"
+    },
+    {
+      "type": "liquibase.logging.core.CompositeLogService"
+    },
+    {
+      "type": "liquibase.logging.core.DefaultLoggerConfiguration"
+    },
+    {
+      "type": "liquibase.logging.core.JavaLogService"
+    },
+    {
+      "type": "liquibase.logging.core.LogServiceFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.logging.mdc.MdcManagerFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.logging.mdc.NoOpMdcManager"
+    },
+    {
+      "type": "liquibase.parser.ChangeLogParserConfiguration"
+    },
+    {
+      "type": "liquibase.parser.core.formattedsql.FormattedSqlChangeLogParser"
+    },
+    {
+      "type": "liquibase.parser.core.json.JsonChangeLogParser"
+    },
+    {
+      "type": "liquibase.parser.core.sql.SqlChangeLogParser"
+    },
+    {
+      "type": "liquibase.parser.core.xml.XMLChangeLogSAXParser"
+    },
+    {
+      "type": "liquibase.parser.core.yaml.YamlChangeLogParser"
+    },
+    {
+      "type": "liquibase.plugin.AbstractPlugin"
+    },
+    {
+      "type": "liquibase.plugin.AbstractPluginBeanInfo"
+    },
+    {
+      "type": "liquibase.plugin.AbstractPluginCustomizer"
+    },
+    {
+      "type": "liquibase.plugin.Plugin"
+    },
+    {
+      "type": "liquibase.report.ShowSummaryGeneratorFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.report.StandardShowSummaryGenerator"
+    },
+    {
+      "type": "liquibase.serializer.LiquibaseSerializable"
+    },
+    {
+      "type": "liquibase.servicelocator.StandardServiceLocator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.CatalogSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.ColumnSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.ColumnSnapshotGeneratorH2"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.ColumnSnapshotGeneratorInformix"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.ColumnSnapshotGeneratorOracle"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.DataSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.ForeignKeySnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.IndexSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.PrimaryKeySnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.SchemaSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.SchemaSnapshotGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.SequenceSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.SequenceSnapshotGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.TableSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.UniqueConstraintSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.UniqueConstraintSnapshotGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.snapshot.jvm.ViewSnapshotGenerator"
+    },
+    {
+      "type": "liquibase.sql.SqlConfiguration"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddAutoIncrementGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddAutoIncrementGeneratorDB2"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddAutoIncrementGeneratorHsqlH2"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddAutoIncrementGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddAutoIncrementGeneratorMySQL"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddAutoIncrementGeneratorSQLite"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddColumnGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddColumnGeneratorDefaultClauseBeforeNotNull"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddColumnGeneratorSQLite"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorDerby"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorHsqldb"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorMSSQL"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorMySQL"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorOracle"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorPostgres"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorSQLite"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorSybase"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddDefaultValueGeneratorSybaseASA"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddForeignKeyConstraintGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddPrimaryKeyGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddPrimaryKeyGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddUniqueConstraintGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddUniqueConstraintGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AddUniqueConstraintGeneratorTDS"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.AlterSequenceGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.BatchDmlExecutablePreparedStatementGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.ClearDatabaseChangeLogTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CommentGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CopyRowsGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateDatabaseChangeLogLockTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateDatabaseChangeLogTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateDatabaseChangeLogTableGeneratorSybase"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateIndexGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateIndexGeneratorFirebird"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateIndexGeneratorPostgres"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateProcedureGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateSequenceGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateSequenceGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateTableGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateViewGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.CreateViewGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DeleteGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropColumnGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropDefaultValueGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropDefaultValueGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropForeignKeyConstraintGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropIndexGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropPrimaryKeyGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropProcedureGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropProcedureGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropSequenceGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropUniqueConstraintGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.DropViewGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetNextChangeSetSequenceValueGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorDB2"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorDerby"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorFirebird"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorHsql"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorMSSQL"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorOracle"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorPostgres"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorSybase"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.GetViewDefinitionGeneratorSybaseASA"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InitializeDatabaseChangeLogLockTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertDataChangeGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorDB2"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorH2"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorHsql"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorInformix"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorMSSQL"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorMySQL"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorOracle"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorPostgres"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorSQLite"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertOrUpdateGeneratorSybaseASA"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.InsertSetGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.LockDatabaseChangeLogGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.MarkChangeSetRanGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.ModifyDataTypeGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RawParameterizedSqlGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RawSqlGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.ReindexGeneratorSQLite"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RemoveChangeSetRanStatusGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RenameColumnGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RenameSequenceGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RenameTableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RenameTableGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RenameViewGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RenameViewGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.ReorganizeTableGeneratorDB2"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.RuntimeGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SelectFromDatabaseChangeLogGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SelectFromDatabaseChangeLogLockGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SetColumnRemarksGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SetColumnRemarksGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SetNullableGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SetTableRemarksGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SetTableRemarksGeneratorSnowflake"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.SetViewRemarksGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.StoredProcedureGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.TableIsEmptyGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.TableRowCountGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.TagDatabaseGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.UnlockDatabaseChangeLogGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.UpdateChangeSetChecksumGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.UpdateChangeSetFilenameGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.UpdateDataChangeGenerator"
+    },
+    {
+      "type": "liquibase.sqlgenerator.core.UpdateGenerator"
+    },
+    {
+      "type": "liquibase.ui.LoggerUIService",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "long[]"
@@ -928,6 +2368,54 @@
     },
     {
       "type": "okhttp3.Authenticator"
+    },
+    {
+      "type": "okhttp3.Credentials"
+    },
+    {
+      "type": "okhttp3.Request"
+    },
+    {
+      "type": "okhttp3.Request$Builder"
+    },
+    {
+      "type": "okhttp3.Response"
+    },
+    {
+      "type": "okhttp3.internal.cache.CacheInterceptor"
+    },
+    {
+      "type": "okhttp3.internal.connection.ConnectInterceptor"
+    },
+    {
+      "type": "okhttp3.internal.connection.Exchange"
+    },
+    {
+      "type": "okhttp3.internal.connection.RealCall"
+    },
+    {
+      "type": "okhttp3.internal.connection.RealCall$AsyncCall"
+    },
+    {
+      "type": "okhttp3.internal.http.BridgeInterceptor"
+    },
+    {
+      "type": "okhttp3.internal.http.CallServerInterceptor"
+    },
+    {
+      "type": "okhttp3.internal.http.RealInterceptorChain"
+    },
+    {
+      "type": "okhttp3.internal.http.RetryAndFollowUpInterceptor"
+    },
+    {
+      "type": "okhttp3.internal.http2.Http2ExchangeCodec"
+    },
+    {
+      "type": "okhttp3.internal.http2.Http2Stream"
+    },
+    {
+      "type": "okhttp3.internal.http2.Http2Stream$StreamTimeout"
     },
     {
       "type": "oracle.jdbc.OracleConnection"
@@ -1208,9 +2696,6 @@
       "type": "org.postgresql.core.QueryExecutorCloseAction"
     },
     {
-      "type": "org.postgresql.core.v3.QueryExecutorImpl"
-    },
-    {
       "type": "org.postgresql.geometric.PGBox"
     },
     {
@@ -1233,9 +2718,6 @@
     },
     {
       "type": "org.postgresql.geometric.PGpolygon"
-    },
-    {
-      "type": "org.postgresql.jdbc.PgPreparedStatement"
     },
     {
       "type": "org.postgresql.jdbc.PgStatement"
@@ -1296,9 +2778,6 @@
       "type": "org.springframework.aop.framework.AopInfrastructureBean"
     },
     {
-      "type": "org.springframework.aop.framework.JdkDynamicAopProxy"
-    },
-    {
       "type": "org.springframework.aop.framework.ProxyConfig",
       "methods": [
         {
@@ -1325,9 +2804,6 @@
       ]
     },
     {
-      "type": "org.springframework.aop.framework.ReflectiveMethodInvocation"
-    },
-    {
       "type": "org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator"
     },
     {
@@ -1346,16 +2822,10 @@
       ]
     },
     {
-      "type": "org.springframework.aop.scope.ScopedObject"
-    },
-    {
       "type": "org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor"
     },
     {
       "type": "org.springframework.aop.support.AbstractPointcutAdvisor"
-    },
-    {
-      "type": "org.springframework.aop.support.AopUtils"
     },
     {
       "type": "org.springframework.aot.generate.Generated"
@@ -1420,6 +2890,9 @@
       ]
     },
     {
+      "type": "org.springframework.beans.factory.annotation.Qualifier"
+    },
+    {
       "type": "org.springframework.beans.factory.aot.BeanFactoryInitializationAotProcessor"
     },
     {
@@ -1466,6 +2939,9 @@
     },
     {
       "type": "org.springframework.boot.SpringBootConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint"
     },
     {
       "type": "org.springframework.boot.ansi.AnsiOutput$Enabled"
@@ -2619,6 +4095,9 @@
       ]
     },
     {
+      "type": "org.springframework.boot.jdbc.SchemaManagementProvider"
+    },
+    {
       "type": "org.springframework.boot.jdbc.SpringJdbcDependsOnDatabaseInitializationDetector",
       "methods": [
         {
@@ -2913,6 +4392,109 @@
     },
     {
       "type": "org.springframework.boot.jpa.autoconfigure.EntityManagerFactoryDependsOnPostProcessor"
+    },
+    {
+      "type": "org.springframework.boot.liquibase.LiquibaseDatabaseInitializerDetector",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "liquibaseDefaultDdlModeProvider",
+          "parameterTypes": [
+            "org.springframework.beans.factory.ObjectProvider"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration$CustomizerConfiguration",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration$LiquibaseAutoConfigurationRuntimeHints"
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration$LiquibaseConfiguration",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "liquibase",
+          "parameterTypes": [
+            "org.springframework.beans.factory.ObjectProvider",
+            "org.springframework.beans.factory.ObjectProvider",
+            "org.springframework.boot.liquibase.autoconfigure.LiquibaseProperties",
+            "org.springframework.beans.factory.ObjectProvider",
+            "org.springframework.boot.liquibase.autoconfigure.LiquibaseConnectionDetails"
+          ]
+        },
+        {
+          "name": "liquibaseConnectionDetails",
+          "parameterTypes": [
+            "org.springframework.boot.liquibase.autoconfigure.LiquibaseProperties"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration$LiquibaseDataSourceCondition",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration$PropertiesLiquibaseConnectionDetails"
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseConnectionDetails"
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseDataSource"
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseProperties",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setChangeLog",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setEnabled",
+          "parameterTypes": [
+            "boolean"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.liquibase.autoconfigure.LiquibaseSchemaManagementProvider"
     },
     {
       "type": "org.springframework.boot.logging.java.JavaLoggingSystem$Factory",
@@ -3480,9 +5062,6 @@
       "type": "org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"
     },
     {
-      "type": "org.springframework.dao.support.PersistenceExceptionTranslationInterceptor"
-    },
-    {
       "type": "org.springframework.data.annotation.Id"
     },
     {
@@ -3592,13 +5171,10 @@
       ]
     },
     {
-      "type": "org.springframework.data.jdbc.repository.query.AbstractJdbcQuery"
+      "type": "org.springframework.data.jdbc.repository.query.Modifying"
     },
     {
       "type": "org.springframework.data.jdbc.repository.query.Query"
-    },
-    {
-      "type": "org.springframework.data.jdbc.repository.query.StringBasedJdbcQuery"
     },
     {
       "type": "org.springframework.data.jdbc.repository.support.JdbcRepositoryFactoryBean",
@@ -3723,9 +5299,6 @@
       "type": "org.springframework.data.repository.core.support.PropertiesBasedNamedQueries"
     },
     {
-      "type": "org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor"
-    },
-    {
       "type": "org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments"
     },
     {
@@ -3772,9 +5345,6 @@
       ]
     },
     {
-      "type": "org.springframework.data.repository.core.support.RepositoryMethodInvoker"
-    },
-    {
       "type": "org.springframework.data.repository.core.support.TransactionalRepositoryFactoryBeanSupport",
       "methods": [
         {
@@ -3819,6 +5389,9 @@
       "type": "org.springframework.data.web.PageableHandlerMethodArgumentResolver"
     },
     {
+      "type": "org.springframework.jdbc.core.ConnectionCallback"
+    },
+    {
       "type": "org.springframework.jdbc.core.JdbcOperations"
     },
     {
@@ -3852,16 +5425,10 @@
       "type": "org.springframework.jdbc.datasource.init.DatabasePopulator"
     },
     {
-      "type": "org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator"
-    },
-    {
       "type": "org.springframework.jdbc.support.JdbcAccessor"
     },
     {
       "type": "org.springframework.jdbc.support.JdbcTransactionManager"
-    },
-    {
-      "type": "org.springframework.jdbc.support.SQLStateSQLExceptionTranslator"
     },
     {
       "type": "org.springframework.jmx.export.MBeanExporter"
@@ -3913,9 +5480,6 @@
       "type": "org.springframework.scheduling.concurrent.ExecutorConfigurationSupport"
     },
     {
-      "type": "org.springframework.scheduling.concurrent.ReschedulingRunnable"
-    },
-    {
       "type": "org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"
     },
     {
@@ -3923,15 +5487,6 @@
     },
     {
       "type": "org.springframework.scheduling.config.ScheduledTaskHolder"
-    },
-    {
-      "type": "org.springframework.scheduling.config.Task$OutcomeTrackingRunnable"
-    },
-    {
-      "type": "org.springframework.scheduling.support.DelegatingErrorHandlingRunnable"
-    },
-    {
-      "type": "org.springframework.scheduling.support.ScheduledMethodRunnable"
     },
     {
       "type": "org.springframework.stereotype.Component"
@@ -4036,9 +5591,6 @@
     },
     {
       "type": "org.springframework.transaction.interceptor.TransactionInterceptor"
-    },
-    {
-      "type": "org.springframework.transaction.interceptor.TransactionInterceptor$1"
     },
     {
       "type": "org.springframework.transaction.interceptor.TransactionalProxy"
@@ -4238,6 +5790,9 @@
       "type": "org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer"
     },
     {
+      "type": "org.telegram.telegrambots.longpolling.util.TelegramOkHttpClientFactory$HttpProxyOkHttpClientCreator"
+    },
+    {
       "type": "org.telegram.telegrambots.meta.api.interfaces.BotApiObject"
     },
     {
@@ -4253,7 +5808,95 @@
       "type": "org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodBoolean"
     },
     {
+      "type": "org.telegram.telegrambots.meta.api.methods.botapimethods.BotApiMethodMessage"
+    },
+    {
       "type": "org.telegram.telegrambots.meta.api.methods.botapimethods.PartialBotApiMethod"
+    },
+    {
+      "type": "org.telegram.telegrambots.meta.api.methods.send.SendMessage",
+      "methods": [
+        {
+          "name": "getAllowPaidBroadcast",
+          "parameterTypes": []
+        },
+        {
+          "name": "getAllowSendingWithoutReply",
+          "parameterTypes": []
+        },
+        {
+          "name": "getBusinessConnectionId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getChatId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDirectMessagesTopicId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDisableNotification",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDisableWebPagePreview",
+          "parameterTypes": []
+        },
+        {
+          "name": "getEntities",
+          "parameterTypes": []
+        },
+        {
+          "name": "getEphemeralMessageParameters",
+          "parameterTypes": []
+        },
+        {
+          "name": "getLinkPreviewOptions",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMessageEffectId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMessageThreadId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMethod",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParseMode",
+          "parameterTypes": []
+        },
+        {
+          "name": "getProtectContent",
+          "parameterTypes": []
+        },
+        {
+          "name": "getReplyMarkup",
+          "parameterTypes": []
+        },
+        {
+          "name": "getReplyParameters",
+          "parameterTypes": []
+        },
+        {
+          "name": "getReplyToMessageId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSuggestedPostParameters",
+          "parameterTypes": []
+        },
+        {
+          "name": "getText",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "org.telegram.telegrambots.meta.api.methods.updates.DeleteWebhook",
@@ -5303,10 +6946,6 @@
           ]
         },
         {
-          "name": "checkPendingReminders",
-          "parameterTypes": []
-        },
-        {
           "name": "hackathonsAbility",
           "parameterTypes": []
         },
@@ -5572,15 +7211,7 @@
       "type": "ru.oldzoomer.hackaton.repository.HackathonRepository"
     },
     {
-      "type": "ru.oldzoomer.hackaton.repository.ReminderRepository",
-      "methods": [
-        {
-          "name": "findPendingReminders",
-          "parameterTypes": [
-            "java.time.LocalDateTime"
-          ]
-        }
-      ]
+      "type": "ru.oldzoomer.hackaton.repository.ReminderRepository"
     },
     {
       "type": "ru.oldzoomer.hackaton.repository.TaskRepository"
@@ -5757,6 +7388,15 @@
       ]
     },
     {
+      "type": "sun.net.www.protocol.https.Handler",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.reflect.ReflectionFactory",
       "methods": [
         {
@@ -5809,7 +7449,25 @@
       ]
     },
     {
+      "type": "sun.security.provider.JavaKeyStore$DualFormatJKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.provider.JavaKeyStore$JKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.MD5",
       "methods": [
         {
           "name": "<init>",
@@ -5929,6 +7587,24 @@
     },
     {
       "type": "sun.security.rsa.RSASignature$SHA256withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
       "methods": [
         {
           "name": "<init>",
@@ -6259,6 +7935,81 @@
       "glob": "META-INF/services/javax.naming.spi.InitialContextFactory"
     },
     {
+      "glob": "META-INF/services/javax.xml.parsers.SAXParserFactory"
+    },
+    {
+      "glob": "META-INF/services/liquibase.analytics.AnalyticsListener"
+    },
+    {
+      "glob": "META-INF/services/liquibase.analytics.configuration.AnalyticsConfiguration"
+    },
+    {
+      "glob": "META-INF/services/liquibase.change.Change"
+    },
+    {
+      "glob": "META-INF/services/liquibase.changelog.ChangeLogHistoryService"
+    },
+    {
+      "glob": "META-INF/services/liquibase.changelog.visitor.ValidatingVisitorGenerator"
+    },
+    {
+      "glob": "META-INF/services/liquibase.changeset.ChangeSetService"
+    },
+    {
+      "glob": "META-INF/services/liquibase.command.CommandStep"
+    },
+    {
+      "glob": "META-INF/services/liquibase.configuration.AutoloadedConfigurations"
+    },
+    {
+      "glob": "META-INF/services/liquibase.configuration.ConfigurationValueProvider"
+    },
+    {
+      "glob": "META-INF/services/liquibase.configuration.ConfiguredValueModifier"
+    },
+    {
+      "glob": "META-INF/services/liquibase.database.Database"
+    },
+    {
+      "glob": "META-INF/services/liquibase.database.LiquibaseTableNames"
+    },
+    {
+      "glob": "META-INF/services/liquibase.database.jvm.ConnectionPatterns"
+    },
+    {
+      "glob": "META-INF/services/liquibase.diff.compare.DatabaseObjectComparator"
+    },
+    {
+      "glob": "META-INF/services/liquibase.executor.Executor"
+    },
+    {
+      "glob": "META-INF/services/liquibase.license.LicenseService"
+    },
+    {
+      "glob": "META-INF/services/liquibase.lockservice.LockService"
+    },
+    {
+      "glob": "META-INF/services/liquibase.logging.LogService"
+    },
+    {
+      "glob": "META-INF/services/liquibase.logging.mdc.MdcManager"
+    },
+    {
+      "glob": "META-INF/services/liquibase.parser.ChangeLogParser"
+    },
+    {
+      "glob": "META-INF/services/liquibase.report.ShowSummaryGenerator"
+    },
+    {
+      "glob": "META-INF/services/liquibase.servicelocator.ServiceLocator"
+    },
+    {
+      "glob": "META-INF/services/liquibase.snapshot.SnapshotGenerator"
+    },
+    {
+      "glob": "META-INF/services/liquibase.sqlgenerator.SqlGenerator"
+    },
+    {
       "glob": "META-INF/services/org.apache.commons.logging.LogFactory"
     },
     {
@@ -6352,6 +8103,9 @@
       "glob": "data.sql"
     },
     {
+      "glob": "db/changelog/db.changelog-master.yaml"
+    },
+    {
       "glob": "git.properties"
     },
     {
@@ -6359,6 +8113,18 @@
     },
     {
       "glob": "linux/amd64/liblz4-java.so"
+    },
+    {
+      "glob": "liquibase.build.properties"
+    },
+    {
+      "glob": "liquibase/i18n/liquibase-core.properties"
+    },
+    {
+      "glob": "liquibase/i18n/liquibase-core_ru.properties"
+    },
+    {
+      "glob": "liquibase/i18n/liquibase-core_ru_RU.properties"
     },
     {
       "glob": "log4j2.StatusLogger.properties"
@@ -6404,12 +8170,6 @@
     },
     {
       "glob": "org/postgresql/driverconfig.properties"
-    },
-    {
-      "glob": "org/postgresql/translation/messages.properties"
-    },
-    {
-      "glob": "org/postgresql/translation/messages_ru_RU.properties"
     },
     {
       "glob": "org/springframework/beans/factory/Aware.class"
@@ -6700,6 +8460,36 @@
       "glob": "org/springframework/boot/jdbc/autoconfigure/XADataSourceAutoConfiguration.class"
     },
     {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$CustomizerConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseAutoConfigurationRuntimeHints.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseDataSourceCondition$DataSourceBeanCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseDataSourceCondition$JdbcConnectionDetailsCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseDataSourceCondition$LiquibaseUrlCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$LiquibaseDataSourceCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$PropertiesLiquibaseConnectionDetails.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration$SpringLiquibaseCustomizer.class"
+    },
+    {
+      "glob": "org/springframework/boot/liquibase/autoconfigure/LiquibaseAutoConfiguration.class"
+    },
+    {
       "glob": "org/springframework/boot/persistence/autoconfigure/PersistenceExceptionTranslationAutoConfiguration.class"
     },
     {
@@ -6845,6 +8635,10 @@
     },
     {
       "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
+    },
+    {
+      "module": "java.base",
       "glob": "jdk/internal/icu/impl/data/icudt76b/nfkc.nrm"
     },
     {
@@ -6856,7 +8650,7 @@
       "glob": "sun/net/idn/uidna.spp"
     },
     {
-      "bundle": "org.postgresql.translation.messages"
+      "bundle": "liquibase/i18n/liquibase-core"
     }
   ]
 }

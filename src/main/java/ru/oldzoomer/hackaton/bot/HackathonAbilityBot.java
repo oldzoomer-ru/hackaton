@@ -309,7 +309,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                                 .build()
                 );
             }
-        });
+        }, Update::hasCallbackQuery);
     }
 
     /** Run every day at 10:00 Moscow time — send daily summary to all users */
