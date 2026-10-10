@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.telegram.telegrambots.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.client.okhttp.OkHttpTelegramClient;
 import org.telegram.telegrambots.longpolling.util.TelegramOkHttpClientFactory;
+import org.telegram.telegrambots.meta.TelegramUrl;
 import org.telegram.telegrambots.meta.generics.TelegramClient;
 
 import java.net.InetSocketAddress;
@@ -40,8 +41,11 @@ public class TelegramBotConfig {
      */
     @Bean
     public TelegramClient telegramClient() {
-        if (botConfig.getProxyUrl() == null || botConfig.getProxyUrl().isBlank()) return new OkHttpTelegramClient(botConfig.getToken());
-        else {
+        if (botConfig.getTelegramApiEndpoint() != null && !botConfig.getTelegramApiEndpoint().isBlank()) {
+            URI telegramUri = URI.create(botConfig.getTelegramApiEndpoint());
+            return new OkHttpTelegramClient(botConfig.getToken(), new TelegramUrl(telegramUri.getScheme(),
+                    telegramUri.getHost(), telegramUri.getPort() != -1 ? telegramUri.getPort() : 443, false));
+        } else if (botConfig.getProxyUrl() != null && !botConfig.getProxyUrl().isBlank()) {
             URI proxyUri = URI.create(botConfig.getProxyUrl());
             String[] userInfo = proxyUri.getUserInfo().split(":", 2);
             String credential = Credentials.basic(userInfo[0], userInfo[1]);
@@ -65,7 +69,7 @@ public class TelegramBotConfig {
             }
 
             return new OkHttpTelegramClient(okHttpClient, botConfig.getToken());
-        }
+        } else return new OkHttpTelegramClient(botConfig.getToken());
     }
 
     /**

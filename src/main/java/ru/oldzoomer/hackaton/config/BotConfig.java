@@ -29,4 +29,9 @@ public class BotConfig {
      * HTTP Proxy URL
      */
     private String proxyUrl;
+
+    /**
+     * Telegram API endpoint
+     */
+    private String telegramApiEndpoint;
 }
