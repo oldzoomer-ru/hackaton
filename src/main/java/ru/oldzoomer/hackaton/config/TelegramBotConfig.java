@@ -40,7 +40,7 @@ public class TelegramBotConfig {
      */
     @Bean
     public TelegramClient telegramClient() {
-        if (botConfig.getProxyUrl() == null) return new OkHttpTelegramClient(botConfig.getToken());
+        if (botConfig.getProxyUrl() == null || botConfig.getProxyUrl().isBlank()) return new OkHttpTelegramClient(botConfig.getToken());
         else {
             URI proxyUri = URI.create(botConfig.getProxyUrl());
             String[] userInfo = proxyUri.getUserInfo().split(":", 2);
