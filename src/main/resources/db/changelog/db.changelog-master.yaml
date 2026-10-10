@@ -4,7 +4,7 @@ databaseChangeLog:
       author: oldzoomer
       changes:
         - sqlFile:
-            path: classpath:db/changelog/V1.0.0__init.sql
+            path: V1.0.0__init.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
