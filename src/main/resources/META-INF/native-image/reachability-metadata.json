@@ -468,9 +468,6 @@
       ]
     },
     {
-      "type": "java.lang.Thread"
-    },
-    {
       "type": "java.lang.ThreadLocal"
     },
     {
@@ -573,9 +570,6 @@
       "type": "java.net.Proxy"
     },
     {
-      "type": "java.net.Proxy$Type"
-    },
-    {
       "type": "java.net.SocketAddress"
     },
     {
@@ -620,6 +614,9 @@
       "type": "java.sql.ResultSet"
     },
     {
+      "type": "java.sql.SQLException"
+    },
+    {
       "type": "java.sql.Statement[]"
     },
     {
@@ -627,6 +624,128 @@
     },
     {
       "type": "java.sql.Timestamp"
+    },
+    {
+      "type": "java.sql.Types",
+      "fields": [
+        {
+          "name": "ARRAY"
+        },
+        {
+          "name": "BIGINT"
+        },
+        {
+          "name": "BINARY"
+        },
+        {
+          "name": "BIT"
+        },
+        {
+          "name": "BLOB"
+        },
+        {
+          "name": "BOOLEAN"
+        },
+        {
+          "name": "CHAR"
+        },
+        {
+          "name": "CLOB"
+        },
+        {
+          "name": "DATALINK"
+        },
+        {
+          "name": "DATE"
+        },
+        {
+          "name": "DECIMAL"
+        },
+        {
+          "name": "DISTINCT"
+        },
+        {
+          "name": "DOUBLE"
+        },
+        {
+          "name": "FLOAT"
+        },
+        {
+          "name": "INTEGER"
+        },
+        {
+          "name": "JAVA_OBJECT"
+        },
+        {
+          "name": "LONGNVARCHAR"
+        },
+        {
+          "name": "LONGVARBINARY"
+        },
+        {
+          "name": "LONGVARCHAR"
+        },
+        {
+          "name": "NCHAR"
+        },
+        {
+          "name": "NCLOB"
+        },
+        {
+          "name": "NULL"
+        },
+        {
+          "name": "NUMERIC"
+        },
+        {
+          "name": "NVARCHAR"
+        },
+        {
+          "name": "OTHER"
+        },
+        {
+          "name": "REAL"
+        },
+        {
+          "name": "REF"
+        },
+        {
+          "name": "REF_CURSOR"
+        },
+        {
+          "name": "ROWID"
+        },
+        {
+          "name": "SMALLINT"
+        },
+        {
+          "name": "SQLXML"
+        },
+        {
+          "name": "STRUCT"
+        },
+        {
+          "name": "TIME"
+        },
+        {
+          "name": "TIMESTAMP"
+        },
+        {
+          "name": "TIMESTAMP_WITH_TIMEZONE"
+        },
+        {
+          "name": "TIME_WITH_TIMEZONE"
+        },
+        {
+          "name": "TINYINT"
+        },
+        {
+          "name": "VARBINARY"
+        },
+        {
+          "name": "VARCHAR"
+        }
+      ]
     },
     {
       "type": "java.sql.Wrapper"
@@ -668,13 +787,19 @@
       "type": "java.util.EventListener"
     },
     {
+      "type": "java.util.HashSet",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "java.util.List"
     },
     {
       "type": "java.util.Map"
-    },
-    {
-      "type": "java.util.Objects"
     },
     {
       "type": "java.util.Optional"
@@ -686,7 +811,13 @@
       "type": "java.util.UUID"
     },
     {
-      "type": "java.util.concurrent.ConcurrentHashMap"
+      "type": "java.util.concurrent.ConcurrentHashMap",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "java.util.concurrent.Executor"
@@ -696,12 +827,6 @@
     },
     {
       "type": "java.util.concurrent.ThreadFactory"
-    },
-    {
-      "type": "java.util.concurrent.ThreadPoolExecutor"
-    },
-    {
-      "type": "java.util.concurrent.ThreadPoolExecutor$Worker"
     },
     {
       "type": "java.util.function.BiConsumer"
@@ -717,27 +842,6 @@
     },
     {
       "type": "java.util.logging.LogManager"
-    },
-    {
-      "type": "java.util.stream.AbstractPipeline"
-    },
-    {
-      "type": "java.util.stream.ForEachOps$ForEachOp"
-    },
-    {
-      "type": "java.util.stream.ForEachOps$ForEachOp$OfRef"
-    },
-    {
-      "type": "java.util.stream.ReferencePipeline"
-    },
-    {
-      "type": "java.util.stream.ReferencePipeline$2$1"
-    },
-    {
-      "type": "java.util.stream.ReferencePipeline$3$1"
-    },
-    {
-      "type": "java.util.stream.Streams$StreamBuilderImpl"
     },
     {
       "type": "javax.annotation.Nonnull"
@@ -1289,6 +1393,10 @@
           "parameterTypes": []
         },
         {
+          "name": "getPath",
+          "parameterTypes": []
+        },
+        {
           "name": "setPath",
           "parameterTypes": [
             "java.lang.String"
@@ -1744,6 +1852,213 @@
       "type": "liquibase.database.jvm.JdbcConnectionPatterns"
     },
     {
+      "type": "liquibase.datatype.core.BigIntType"
+    },
+    {
+      "type": "liquibase.datatype.core.BinaryTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.BlobType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.BooleanType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.CharType"
+    },
+    {
+      "type": "liquibase.datatype.core.ClobType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.ClobTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.CurrencyType"
+    },
+    {
+      "type": "liquibase.datatype.core.DatabaseFunctionType"
+    },
+    {
+      "type": "liquibase.datatype.core.DateTimeType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.DateType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.DateTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.DecimalType"
+    },
+    {
+      "type": "liquibase.datatype.core.DoubleDataTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.DoubleType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.FloatType"
+    },
+    {
+      "type": "liquibase.datatype.core.IntType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.MediumIntType"
+    },
+    {
+      "type": "liquibase.datatype.core.NCharType"
+    },
+    {
+      "type": "liquibase.datatype.core.NVarcharType"
+    },
+    {
+      "type": "liquibase.datatype.core.NumberType"
+    },
+    {
+      "type": "liquibase.datatype.core.SmallIntType"
+    },
+    {
+      "type": "liquibase.datatype.core.TextDataTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.TimeType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.TimeTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.TimestampNTZTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.TimestampType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.TimestampTypeSnowflake",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.TinyIntType"
+    },
+    {
+      "type": "liquibase.datatype.core.UUIDType"
+    },
+    {
+      "type": "liquibase.datatype.core.UnknownType"
+    },
+    {
+      "type": "liquibase.datatype.core.VarcharType",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "liquibase.datatype.core.XMLType"
+    },
+    {
       "type": "liquibase.diff.compare.core.CatalogComparator"
     },
     {
@@ -1871,6 +2186,15 @@
     },
     {
       "type": "liquibase.parser.ChangeLogParserConfiguration"
+    },
+    {
+      "type": "liquibase.parser.SqlParserFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "liquibase.parser.core.formattedsql.FormattedSqlChangeLogParser"
@@ -2332,6 +2656,9 @@
       ]
     },
     {
+      "type": "liquibase.util.StandardSqlParser"
+    },
+    {
       "type": "long[]"
     },
     {
@@ -2368,54 +2695,6 @@
     },
     {
       "type": "okhttp3.Authenticator"
-    },
-    {
-      "type": "okhttp3.Credentials"
-    },
-    {
-      "type": "okhttp3.Request"
-    },
-    {
-      "type": "okhttp3.Request$Builder"
-    },
-    {
-      "type": "okhttp3.Response"
-    },
-    {
-      "type": "okhttp3.internal.cache.CacheInterceptor"
-    },
-    {
-      "type": "okhttp3.internal.connection.ConnectInterceptor"
-    },
-    {
-      "type": "okhttp3.internal.connection.Exchange"
-    },
-    {
-      "type": "okhttp3.internal.connection.RealCall"
-    },
-    {
-      "type": "okhttp3.internal.connection.RealCall$AsyncCall"
-    },
-    {
-      "type": "okhttp3.internal.http.BridgeInterceptor"
-    },
-    {
-      "type": "okhttp3.internal.http.CallServerInterceptor"
-    },
-    {
-      "type": "okhttp3.internal.http.RealInterceptorChain"
-    },
-    {
-      "type": "okhttp3.internal.http.RetryAndFollowUpInterceptor"
-    },
-    {
-      "type": "okhttp3.internal.http2.Http2ExchangeCodec"
-    },
-    {
-      "type": "okhttp3.internal.http2.Http2Stream"
-    },
-    {
-      "type": "okhttp3.internal.http2.Http2Stream$StreamTimeout"
     },
     {
       "type": "oracle.jdbc.OracleConnection"
@@ -2820,6 +3099,9 @@
           "parameterTypes": []
         }
       ]
+    },
+    {
+      "type": "org.springframework.aop.scope.ScopedObject"
     },
     {
       "type": "org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor"
@@ -5790,7 +6072,7 @@
       "type": "org.telegram.telegrambots.longpolling.util.LongPollingSingleThreadUpdateConsumer"
     },
     {
-      "type": "org.telegram.telegrambots.longpolling.util.TelegramOkHttpClientFactory$HttpProxyOkHttpClientCreator"
+      "type": "org.telegram.telegrambots.meta.TelegramUrl"
     },
     {
       "type": "org.telegram.telegrambots.meta.api.interfaces.BotApiObject"
@@ -7034,7 +7316,19 @@
       "type": "ru.oldzoomer.hackaton.config.BotConfig",
       "methods": [
         {
+          "name": "setCreatorId",
+          "parameterTypes": [
+            "long"
+          ]
+        },
+        {
           "name": "setProxyUrl",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setTelegramApiEndpoint",
           "parameterTypes": [
             "java.lang.String"
           ]
@@ -7208,13 +7502,39 @@
       "type": "ru.oldzoomer.hackaton.entity.User__Accessor_2osjgt"
     },
     {
-      "type": "ru.oldzoomer.hackaton.repository.HackathonRepository"
+      "type": "ru.oldzoomer.hackaton.repository.HackathonRepository",
+      "methods": [
+        {
+          "name": "findActiveHackathons",
+          "parameterTypes": []
+        }
+      ]
     },
     {
-      "type": "ru.oldzoomer.hackaton.repository.ReminderRepository"
+      "type": "ru.oldzoomer.hackaton.repository.ReminderRepository",
+      "methods": [
+        {
+          "name": "findPendingReminders",
+          "parameterTypes": [
+            "java.time.LocalDateTime"
+          ]
+        }
+      ]
     },
     {
-      "type": "ru.oldzoomer.hackaton.repository.TaskRepository"
+      "type": "ru.oldzoomer.hackaton.repository.TaskRepository",
+      "methods": [
+        {
+          "name": "findInProgressTasks",
+          "parameterTypes": []
+        },
+        {
+          "name": "findOverdueTasks",
+          "parameterTypes": [
+            "java.time.LocalDate"
+          ]
+        }
+      ]
     },
     {
       "type": "ru.oldzoomer.hackaton.repository.UserRepository"
@@ -7227,6 +7547,10 @@
           "parameterTypes": [
             "ru.oldzoomer.hackaton.repository.HackathonRepository"
           ]
+        },
+        {
+          "name": "findAllActive",
+          "parameterTypes": []
         }
       ]
     },
@@ -7242,6 +7566,10 @@
             "ru.oldzoomer.hackaton.repository.ReminderRepository",
             "ru.oldzoomer.hackaton.service.HackathonService"
           ]
+        },
+        {
+          "name": "findPending",
+          "parameterTypes": []
         }
       ]
     },
@@ -7256,6 +7584,14 @@
           "parameterTypes": [
             "ru.oldzoomer.hackaton.repository.TaskRepository"
           ]
+        },
+        {
+          "name": "findInProgress",
+          "parameterTypes": []
+        },
+        {
+          "name": "findOverdue",
+          "parameterTypes": []
         }
       ]
     },
@@ -7977,6 +8313,9 @@
       "glob": "META-INF/services/liquibase.database.jvm.ConnectionPatterns"
     },
     {
+      "glob": "META-INF/services/liquibase.datatype.LiquibaseDataType"
+    },
+    {
       "glob": "META-INF/services/liquibase.diff.compare.DatabaseObjectComparator"
     },
     {
@@ -7996,6 +8335,9 @@
     },
     {
       "glob": "META-INF/services/liquibase.parser.ChangeLogParser"
+    },
+    {
+      "glob": "META-INF/services/liquibase.parser.LiquibaseSqlParser"
     },
     {
       "glob": "META-INF/services/liquibase.report.ShowSummaryGenerator"
@@ -8170,6 +8512,12 @@
     },
     {
       "glob": "org/postgresql/driverconfig.properties"
+    },
+    {
+      "glob": "org/postgresql/translation/messages.properties"
+    },
+    {
+      "glob": "org/postgresql/translation/messages_ru_RU.properties"
     },
     {
       "glob": "org/springframework/beans/factory/Aware.class"
@@ -8651,6 +8999,9 @@
     },
     {
       "bundle": "liquibase/i18n/liquibase-core"
+    },
+    {
+      "bundle": "org.postgresql.translation.messages"
     }
   ]
 }
