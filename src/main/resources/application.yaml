@@ -24,4 +24,4 @@ telegram:
   bot:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
-    proxy-url: ${TELEGRAM_PROXY_URL}
+    proxy-url: ${TELEGRAM_PROXY_URL:}
