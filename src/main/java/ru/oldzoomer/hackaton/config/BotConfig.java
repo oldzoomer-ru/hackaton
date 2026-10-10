@@ -24,4 +24,9 @@ public class BotConfig {
      * Bot username obtained from @BotFather (without @ prefix).
      */
     private String username;
+
+    /**
+     * HTTP Proxy URL
+     */
+    private String proxyUrl;
 }

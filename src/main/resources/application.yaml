@@ -31,11 +31,7 @@ telegram:
   bot:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
-    # Long polling settings
-    updates-polling:
-      enabled: true
-      timeout: 10
-      max-workers: 4
+    proxy-url: ${TELEGRAM_PROXY_URL}
 
 # Logging
 logging:
