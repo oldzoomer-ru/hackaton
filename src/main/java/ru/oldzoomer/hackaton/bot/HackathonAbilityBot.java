@@ -49,6 +49,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
     private final ReminderService reminderService;
     private final UserRepository userRepository;
     private final ReminderRepository reminderRepository;
+    private final BotConfig botConfig;
 
     public HackathonAbilityBot(TelegramClient client, BotConfig botConfig,
                                HackathonService hackathonService,
@@ -62,11 +63,12 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         this.reminderService = reminderService;
         this.userRepository = userRepository;
         this.reminderRepository = reminderRepository;
+        this.botConfig = botConfig;
     }
 
     @Override
     public long creatorId() {
-        return 0L;
+        return botConfig.getCreatorId();
     }
 
     @Override

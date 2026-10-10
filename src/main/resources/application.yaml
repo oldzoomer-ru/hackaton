@@ -23,5 +23,6 @@ telegram:
   bot:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
+    creator-id: ${TELEGRAM_CREATOR_ID}
     proxy-url: ${TELEGRAM_PROXY_URL:}
     telegram-api-endpoint: ${TELEGRAM_API_URL:}

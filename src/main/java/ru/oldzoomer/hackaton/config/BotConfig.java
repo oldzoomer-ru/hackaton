@@ -34,4 +34,9 @@ public class BotConfig {
      * Telegram API endpoint
      */
     private String telegramApiEndpoint;
+
+    /**
+     * Creator ID
+     */
+    private long creatorId;
 }
