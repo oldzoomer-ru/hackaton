@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: hackaton:latest
+    image: ghcr.io/oldzoomer-ru/hackaton:master
     container_name: hackaton-app
     restart: unless-stopped
     environment:
