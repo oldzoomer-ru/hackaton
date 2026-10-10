@@ -86,12 +86,12 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
                     String sb = """
-                            👋 _Добро пожаловать в бота хакинатонов!_
+                            👋 _Добро пожаловать в бота хакатонов!_
                             
-                            Я помогу вам следить за хакинатонами, задачами и напоминаниями.
+                            Я помогу вам следить за хакатонами, задачами и напоминаниями.
                             
                             Доступные команды:
-                            /hackathons — список активных хакаулонов
+                            /hackathons — список активных хакатонов
                             /tasks — ваши задачи
                             /reminders — напоминания
                             /help — справка
@@ -116,7 +116,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                             
                             🔹 /start — приветствие и главное меню
                             🔹 /help — эта справка
-                            🔹 /hackathons — список активных и предстоящих хакаулонов
+                            🔹 /hackathons — список активных и предстоящих хакатонов
                             🔹 /tasks — задачи: в работе и просроченные
                             🔹 /reminders — предстоящие напоминания
                             """;
@@ -137,7 +137,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
 
                     List<Hackathon> hackathons = hackathonService.findAllActive();
                     if (hackathons.isEmpty()) {
-                        silent.sendMd("📭 _Нет активных хакаулонов._", chatId);
+                        silent.sendMd("📭 _Нет активных хакатонов._", chatId);
                         return;
                     }
 
@@ -256,7 +256,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 if ("hackathons".equals(data)) {
                     List<Hackathon> hackathons = hackathonService.findAllActive();
                     if (hackathons.isEmpty()) {
-                        silent.sendMd("📭 _Нет активных хакаулонов._", chatId);
+                        silent.sendMd("📭 _Нет активных хакатонов._", chatId);
                         return;
                     }
                     StringBuilder sb = new StringBuilder();

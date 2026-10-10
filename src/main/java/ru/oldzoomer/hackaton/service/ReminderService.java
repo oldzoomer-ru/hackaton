@@ -117,9 +117,9 @@ public class ReminderService {
     }
 
     @Transactional
-    public int cleanupOld() {
+    public void cleanupOld() {
         LocalDateTime cutoff = LocalDateTime.now().minusDays(30);
-        return reminderRepo.cleanupOldExecuted(cutoff);
+        reminderRepo.cleanupOldExecuted(cutoff);
     }
 
     /** Create a manual reminder set by the user via /remind command */

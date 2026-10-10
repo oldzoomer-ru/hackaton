@@ -19,8 +19,8 @@ public interface ReminderRepository extends CrudRepository<Reminder, Long> {
     List<Reminder> findPendingForUser(@Param("userId") Long userId, @Param("now") LocalDateTime now);
 
     @Query("UPDATE reminders SET executed = true WHERE id = :id")
-    int markExecuted(@Param("id") Long id);
+    void markExecuted(@Param("id") Long id);
 
     @Query("DELETE FROM reminders WHERE executed = true AND created_at < :before")
-    int cleanupOldExecuted(@Param("before") LocalDateTime before);
+    void cleanupOldExecuted(@Param("before") LocalDateTime before);
 }
