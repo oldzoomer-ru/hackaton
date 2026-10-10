@@ -56,8 +56,6 @@ dependencies {
 	implementation 'org.telegram:telegrambots-abilities:10.3.0'
 	implementation 'org.telegram:telegrambots-client:10.3.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-cache'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     runtimeOnly 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
