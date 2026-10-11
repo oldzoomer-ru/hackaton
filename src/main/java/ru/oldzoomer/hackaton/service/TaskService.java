@@ -9,6 +9,7 @@ import ru.oldzoomer.hackaton.repository.TaskRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +20,12 @@ public class TaskService {
 
     @Transactional
     public Task addTask(Long hackathonId, String title, String assignee, LocalDate deadline, String notes) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Task title must not be blank");
+        }
+        if (hackathonId == null) {
+            throw new IllegalArgumentException("Hackathon ID must not be null");
+        }
         Task task = new Task();
         task.setHackathonId(hackathonId);
         task.setTitle(title);
@@ -39,7 +46,7 @@ public class TaskService {
             Task saved = taskRepo.save(task);
             log.info("Task completed: {}", task.getTitle());
             return saved;
-        }).orElse(null);
+        }).orElseThrow(() -> new NoSuchElementException("Task not found with id: " + taskId));
     }
 
     public List<Task> findByHackathonId(Long hackathonId) {
@@ -72,6 +79,6 @@ public class TaskService {
             Task saved = taskRepo.save(task);
             log.info("Task {} status updated to {}", taskId, status);
             return saved;
-        }).orElse(null);
+        }).orElseThrow(() -> new NoSuchElementException("Task not found with id: " + taskId));
     }
 }

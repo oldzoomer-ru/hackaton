@@ -14,11 +14,11 @@ import java.util.List;
 @Repository
 public interface ReminderRepository extends CrudRepository<Reminder, Long> {
 
-    @Query("SELECT * FROM reminders WHERE executed = false AND scheduled_at <= :now ORDER BY scheduled_at ASC")
+    @Query("SELECT * FROM reminders WHERE executed = false AND scheduled_at <= :now ORDER BY scheduled_at ASC LIMIT 1000")
     List<Reminder> findPendingReminders(@Param("now") LocalDateTime now);
 
-    @Query("SELECT * FROM reminders WHERE telegram_user_id = :userId AND executed = false ORDER BY scheduled_at ASC")
-    List<Reminder> findPendingForUser(@Param("userId") Long userId, @Param("now") LocalDateTime now);
+    @Query("SELECT COUNT(*) > 0 FROM reminders WHERE telegram_user_id = :userId AND type = :type AND scheduled_at = :scheduledAt AND executed = false")
+    boolean existsPending(@Param("userId") Long userId, @Param("type") String type, @Param("scheduledAt") LocalDateTime scheduledAt);
 
     @Transactional
     @Modifying

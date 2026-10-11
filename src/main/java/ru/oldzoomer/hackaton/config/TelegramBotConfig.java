@@ -47,18 +47,27 @@ public class TelegramBotConfig {
                     telegramUri.getHost(), telegramUri.getPort() != -1 ? telegramUri.getPort() : 443, false));
         } else if (botConfig.getProxyUrl() != null && !botConfig.getProxyUrl().isBlank()) {
             URI proxyUri = URI.create(botConfig.getProxyUrl());
-            String[] userInfo = proxyUri.getUserInfo().split(":", 2);
-            String credential = Credentials.basic(userInfo[0], userInfo[1]);
+            String credential;
+            String userInfo = proxyUri.getUserInfo();
+            if (userInfo != null && userInfo.contains(":")) {
+                String[] parts = userInfo.split(":", 2);
+                credential = Credentials.basic(parts[0], parts[1]);
+            } else {
+                credential = null;
+            }
             OkHttpClient okHttpClient;
             if (proxyUri.getScheme().equalsIgnoreCase("http") || proxyUri.getScheme().equalsIgnoreCase("https")) {
+                final String proxyCredential = credential;
                 okHttpClient = new TelegramOkHttpClientFactory.HttpProxyOkHttpClientCreator(
                         () -> new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyUri.getHost(), proxyUri.getPort())),
                         () -> new Authenticator() {
                             @Override
                             public @NonNull Request authenticate(@Nullable Route route, @NonNull Response response) {
-                                return response.request().newBuilder()
-                                        .header("Proxy-Authorization", credential)
-                                        .build();
+                                var builder = response.request().newBuilder();
+                                if (proxyCredential != null) {
+                                    builder.header("Proxy-Authorization", proxyCredential);
+                                }
+                                return builder.build();
                             }
                         }
                 ).get();

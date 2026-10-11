@@ -41,9 +41,6 @@ public class ReminderService {
                     for (var trigger : triggerTimes) {
                         long triggerDays = java.time.temporal.ChronoUnit.DAYS.between(today, trigger.toLocalDate());
                         if (triggerDays == daysUntil) {
-                            Reminder r = new Reminder();
-                            r.setTelegramUserId(userId);
-                            r.setScheduledAt(trigger);
                             String type = switch ((int) daysUntil) {
                                 case 7 -> "DEADLINE_7D";
                                 case 3 -> "DEADLINE_3D";
@@ -51,20 +48,28 @@ public class ReminderService {
                                 case 0 -> "DEADLINE_TODAY";
                                 default -> "DEADLINE_OTHER";
                             };
-                            r.setType(type);
-                            r.setText("📌 " + hack.getName() + " — дедлайн регистрации через " + daysUntil + " дн.!");
-                            reminders.add(r);
+                            if (!reminderRepo.existsPending(userId, type, trigger)) {
+                                Reminder r = new Reminder();
+                                r.setTelegramUserId(userId);
+                                r.setScheduledAt(trigger);
+                                r.setType(type);
+                                r.setText("📌 " + hack.getName() + " — дедлайн регистрации через " + daysUntil + " дн.!");
+                                reminders.add(r);
+                            }
                         }
                     }
                 }
                 // Overdue registration
                 if (daysUntil < 0) {
-                    Reminder r = new Reminder();
-                    r.setTelegramUserId(userId);
-                    r.setScheduledAt(today.atTime(LocalTime.of(9, 0)));
-                    r.setType("OVERDUE_DAILY");
-                    r.setText("⛔ " + hack.getName() + " — дедлайн регистрации просрочен на " + Math.abs((int) daysUntil) + " дн.!");
-                    reminders.add(r);
+                    LocalDateTime scheduledAt = today.atTime(LocalTime.of(9, 0));
+                    if (!reminderRepo.existsPending(userId, "OVERDUE_DAILY", scheduledAt)) {
+                        Reminder r = new Reminder();
+                        r.setTelegramUserId(userId);
+                        r.setScheduledAt(scheduledAt);
+                        r.setType("OVERDUE_DAILY");
+                        r.setText("⛔ " + hack.getName() + " — дедлайн регистрации просрочен на " + Math.abs((int) daysUntil) + " дн.!");
+                        reminders.add(r);
+                    }
                 }
             }
 
@@ -75,9 +80,6 @@ public class ReminderService {
                     for (var trigger : triggerTimes) {
                         long triggerDays = java.time.temporal.ChronoUnit.DAYS.between(today, trigger.toLocalDate());
                         if (triggerDays == daysUntil) {
-                            Reminder r = new Reminder();
-                            r.setTelegramUserId(userId);
-                            r.setScheduledAt(trigger);
                             String type = switch ((int) daysUntil) {
                                 case 7 -> "DEADLINE_7D";
                                 case 3 -> "DEADLINE_3D";
@@ -85,9 +87,14 @@ public class ReminderService {
                                 case 0 -> "DEADLINE_TODAY";
                                 default -> "DEADLINE_OTHER";
                             };
-                            r.setType(type);
-                            r.setText("🏆 " + hack.getName() + " — финал через " + daysUntil + " дн.!");
-                            reminders.add(r);
+                            if (!reminderRepo.existsPending(userId, type, trigger)) {
+                                Reminder r = new Reminder();
+                                r.setTelegramUserId(userId);
+                                r.setScheduledAt(trigger);
+                                r.setType(type);
+                                r.setText("🏆 " + hack.getName() + " — финал через " + daysUntil + " дн.!");
+                                reminders.add(r);
+                            }
                         }
                     }
                 }
@@ -95,12 +102,15 @@ public class ReminderService {
         }
 
         // Daily summary reminder at 10:00
-        Reminder daily = new Reminder();
-        daily.setTelegramUserId(userId);
-        daily.setScheduledAt(today.atTime(LocalTime.of(10, 0)));
-        daily.setType("DAILY_SUMMARY");
-        daily.setText("📊 Ежедневная сводка");
-        reminders.add(daily);
+        LocalDateTime dailyAt = today.atTime(LocalTime.of(10, 0));
+        if (!reminderRepo.existsPending(userId, "DAILY_SUMMARY", dailyAt)) {
+            Reminder daily = new Reminder();
+            daily.setTelegramUserId(userId);
+            daily.setScheduledAt(dailyAt);
+            daily.setType("DAILY_SUMMARY");
+            daily.setText("📊 Ежедневная сводка");
+            reminders.add(daily);
+        }
 
         reminderRepo.saveAll(reminders);
         log.info("Generated {} reminders for user {}", reminders.size(), userId);

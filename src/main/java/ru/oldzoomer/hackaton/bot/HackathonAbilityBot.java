@@ -51,6 +51,9 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
     private final ReminderRepository reminderRepository;
     private final BotConfig botConfig;
 
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM", Locale.of("RU"));
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy", Locale.of("RU"));
+
     public HackathonAbilityBot(TelegramClient client, BotConfig botConfig,
                                HackathonService hackathonService,
                                TaskService taskService,
@@ -83,10 +86,27 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .name("start")
                 .info("Welcome message and main menu")
                 .locality(Locality.ALL)
-                .privacy(Privacy.PUBLIC)
+.privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
+
+                    // Register user in DB (Issue 6)
+                    var telegramUser = m.user();
+                    if (telegramUser != null) {
+                        userRepository.findByTelegramId(telegramUser.getId())
+                                .orElseGet(() -> {
+                                    User user = new User(
+                                            telegramUser.getId(),
+                                            telegramUser.getUserName(),
+                                            telegramUser.getFirstName(),
+                                            telegramUser.getLastName()
+                                    );
+                                    userRepository.save(user);
+                                    return user;
+                                });
+                    }
+
                     String sb = """
                             👋 _Добро пожаловать в бота хакатонов!_
                             
@@ -109,7 +129,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .name("help")
                 .info("Show help and available commands")
                 .locality(Locality.ALL)
-                .privacy(Privacy.PUBLIC)
+.privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
@@ -131,7 +151,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         return builder()
                 .name("hackathons")
                 .info("List active hackathons")
-                .locality(Locality.ALL)
+.locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
@@ -167,7 +187,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         return builder()
                 .name("tasks")
                 .info("List in-progress and overdue tasks")
-                .locality(Locality.ALL)
+.locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
@@ -196,7 +216,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                         for (Task t : overdue) {
                             sb.append("  ⚠️ ").append(t.getTitle());
                             if (t.getDeadline() != null) {
-                                sb.append(" (до ").append(t.getDeadline().format(DateTimeFormatter.ofPattern("dd.MM", Locale.of("RU")))).append(")");
+                                sb.append(" (до ").append(t.getDeadline().format(DATE_FORMATTER)).append(")");
                             }
                             sb.append("\n");
                         }
@@ -216,7 +236,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         return builder()
                 .name("reminders")
                 .info("List pending reminders")
-                .locality(Locality.ALL)
+.locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
@@ -255,53 +275,58 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 SilentSender silent = bot.getSilent();
 
                 String data = cb.getData();
-                if ("hackathons".equals(data)) {
-                    List<Hackathon> hackathons = hackathonService.findAllActive();
-                    if (hackathons.isEmpty()) {
-                        silent.sendMd("📭 _Нет активных хакатонов._", chatId);
-                        return;
-                    }
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("🏆 _АКТИВНЫЕ ХАКАТОНЫ:_\n\n");
-                    AtomicInteger idx = new AtomicInteger(1);
-                    for (Hackathon h : hackathons) {
-                        sb.append(idx.getAndIncrement()).append(". _").append(h.getName()).append("_\n");
-                        if (h.getTrack() != null) {
-                            sb.append("   📌 Трек: ").append(h.getTrack()).append("\n");
+                switch (data) {
+                    case "hackathons" -> {
+                        List<Hackathon> hackathons = hackathonService.findAllActive();
+                        if (hackathons.isEmpty()) {
+                            silent.sendMd("📭 _Нет активных хакатонов._", chatId);
+                            return;
                         }
-                        sb.append("   ").append(hackathonService.getDaysUntil(h.getRegistrationDeadline())).append(" до регистрации\n");
-                        sb.append("\n");
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("🏆 _АКТИВНЫЕ ХАКАТОНЫ:_\n\n");
+                        AtomicInteger idx = new AtomicInteger(1);
+                        for (Hackathon h : hackathons) {
+                            sb.append(idx.getAndIncrement()).append(". _").append(h.getName()).append("_\n");
+                            if (h.getTrack() != null) {
+                                sb.append("   📌 Трек: ").append(h.getTrack()).append("\n");
+                            }
+                            sb.append("   ").append(hackathonService.getDaysUntil(h.getRegistrationDeadline())).append(" до регистрации\n");
+                            sb.append("\n");
+                        }
+                        silent.sendMd(sb.toString(), chatId);
                     }
-                    silent.sendMd(sb.toString(), chatId);
-                } else if ("tasks".equals(data)) {
-                    List<Task> inProgress = taskService.findInProgress();
-                    List<Task> overdue = taskService.findOverdue();
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("📋 _ЗАДАЧИ:_\n\n");
-                    if (!inProgress.isEmpty()) {
-                        sb.append("🔄 _В работе:_\n");
-                        inProgress.forEach(t -> sb.append("  🏃 ").append(t.getTitle()).append("\n"));
-                        sb.append("\n");
+                    case "tasks" -> {
+                        List<Task> inProgress = taskService.findInProgress();
+                        List<Task> overdue = taskService.findOverdue();
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("📋 _ЗАДАЧИ:_\n\n");
+                        if (!inProgress.isEmpty()) {
+                            sb.append("🔄 _В работе:_\n");
+                            inProgress.forEach(t -> sb.append("  🏃 ").append(t.getTitle()).append("\n"));
+                            sb.append("\n");
+                        }
+                        if (!overdue.isEmpty()) {
+                            sb.append("⛔ _Просроченные:_\n");
+                            overdue.forEach(t -> sb.append("  ⚠️ ").append(t.getTitle()).append("\n"));
+                            sb.append("\n");
+                        }
+                        if (inProgress.isEmpty() && overdue.isEmpty()) {
+                            sb.append("✅ Нет активных задач!\n");
+                        }
+                        silent.sendMd(sb.toString(), chatId);
                     }
-                    if (!overdue.isEmpty()) {
-                        sb.append("⛔ _Просроченные:_\n");
-                        overdue.forEach(t -> sb.append("  ⚠️ ").append(t.getTitle()).append("\n"));
-                        sb.append("\n");
+                    case "reminders" -> {
+                        List<Reminder> pending = reminderService.findPending();
+                        if (pending.isEmpty()) {
+                            silent.sendMd("📭 _Нет напоминаний._", chatId);
+                            return;
+                        }
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("⏰ _НАПОМИНАНИЯ:_\n\n");
+                        pending.forEach(r -> sb.append("🔔 ").append(r.getText()).append("\n"));
+                        silent.sendMd(sb.toString(), chatId);
                     }
-                    if (inProgress.isEmpty() && overdue.isEmpty()) {
-                        sb.append("✅ Нет активных задач!\n");
-                    }
-                    silent.sendMd(sb.toString(), chatId);
-                } else if ("reminders".equals(data)) {
-                    List<Reminder> pending = reminderService.findPending();
-                    if (pending.isEmpty()) {
-                        silent.sendMd("📭 _Нет напоминаний._", chatId);
-                        return;
-                    }
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("⏰ _НАПОМИНАНИЯ:_\n\n");
-                    pending.forEach(r -> sb.append("🔔 ").append(r.getText()).append("\n"));
-                    silent.sendMd(sb.toString(), chatId);
+                    case null, default -> silent.sendMd("❓ _Неизвестная команда._", chatId);
                 }
 
                 // Answer callback to remove spinner
@@ -324,20 +349,20 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
             return;
         }
 
+        String summary = buildDailySummary();
         for (User user : users) {
             try {
-                String summary = buildDailySummary();
                 sendMessage(user.getTelegramId(), summary);
 
                 // Create a reminder record
                 Reminder r = new Reminder();
-                r.setTelegramUserId(user.getId());
+                r.setTelegramUserId(user.getTelegramId());
                 r.setScheduledAt(LocalDateTime.now());
                 r.setType("DAILY_SUMMARY");
                 r.setText("📊 Ежедневная сводка");
                 reminderRepository.save(r);
             } catch (Exception e) {
-                log.error("Failed to send daily summary to user {}", user.getTelegramId(), e);
+                log.error("Failed to send daily summary to user {}", maskChatId(user.getTelegramId()), e);
             }
         }
     }
@@ -374,11 +399,15 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         List<User> users = userRepository.findRecentUsers();
         for (User user : users) {
             for (Task task : overdue) {
+                // Only send to the user assigned to the task (Issue 2)
+                if (task.getAssignee() == null || !task.getAssignee().equals(user.getUsername())) {
+                    continue;
+                }
                 try {
                     String msg = String.format(
                             "⛔ _Просрочена задача!_\n\n📌 %s\n📅 Было нужно: %s\n\n_Планируешь сделать или перенести дедлайн?_",
                             task.getTitle(),
-                            task.getDeadline().format(DateTimeFormatter.ofPattern("dd.MM.yyyy", Locale.of("RU")))
+                            task.getDeadline().format(DATE_TIME_FORMATTER)
                     );
                     sendMessage(user.getTelegramId(), msg);
                 } catch (Exception e) {
@@ -395,7 +424,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         LocalDate today = LocalDate.now();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("📊 _СВОДКА НА СЕГОДНЯ:_ _").append(today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy", Locale.of("RU")))).append("_\n\n");
+        sb.append("📊 _СВОДКА НА СЕГОДНЯ:_ _").append(today.format(DATE_TIME_FORMATTER)).append("_\n\n");
 
         // Upcoming deadlines (next 7 days)
         List<Hackathon> upcoming = hackathons.stream()
@@ -412,7 +441,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 long days = ChronoUnit.DAYS.between(today, h.getRegistrationDeadline());
                 String emoji = days <= 1 ? "🔥" : "🔹";
                 sb.append("  ").append(emoji).append(" ").append(h.getName())
-                        .append(" — ").append(h.getRegistrationDeadline().format(DateTimeFormatter.ofPattern("dd.MM", Locale.of("RU"))))
+                        .append(" — ").append(h.getRegistrationDeadline().format(DATE_FORMATTER))
                         .append(" (").append(days).append(" дн.)\n");
             });
             sb.append("\n");
@@ -451,9 +480,16 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
     private void sendMessage(Long chatId, String text) {
         try {
             getSilent().sendMd(text, chatId);
-            log.info("Sent message to Telegram user {}", chatId);
+            log.info("Sent message to Telegram user {}", maskChatId(chatId));
         } catch (Exception e) {
-            log.error("Failed to send message to Telegram user {}", chatId, e);
+            log.error("Failed to send message to Telegram user {}", maskChatId(chatId), e);
         }
+    }
+
+    /** Mask PII: show only last 4 digits of Telegram chat ID */
+    private String maskChatId(Long chatId) {
+        String id = String.valueOf(chatId);
+        if (id.length() <= 4) return "****";
+        return "****" + id.substring(id.length() - 4);
     }
 }
