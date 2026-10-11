@@ -308,6 +308,44 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .build();
     }
 
+    /**
+     * Query data via natural language
+     */
+    public Ability naturalLanguageQueryAbility() {
+        return builder()
+                .name("query")
+                .info("Ask questions about hackathons, tasks, reminders in natural language")
+                .locality(Locality.USER)
+                .privacy(Privacy.PUBLIC)
+                .action(m -> {
+                    long chatId = m.chatId();
+                    SilentSender silent = getSilent();
+
+                    String text = m.update().getMessage().getText();
+                    if (text == null || text.isBlank()) {
+                        String help = """
+                                        ❓ _Спросите что-нибудь:_
+                                        • Какие хакатоны активны?
+                                        • Какие задачи у Alex?
+                                        • Какие напоминания предстоят?
+                                        • Сколько дней до дедлайна?
+                                        • Покажи все задачи в работе
+                                        • Какие задачи просрочены?""";
+                        silent.sendMd(help, chatId);
+                        return;
+                    }
+
+                    try {
+                        String response = aiService.processDialog(chatId, text);
+                        silent.sendMd(response, chatId);
+                    } catch (Exception e) {
+                        log.error("Error in query ability for user {}", chatId, e);
+                        silent.sendMd("❌ Ошибка при обработке запроса.", chatId);
+                    }
+                })
+                .build();
+    }
+
     // ==================== REPLIES ====================
 
     /**
