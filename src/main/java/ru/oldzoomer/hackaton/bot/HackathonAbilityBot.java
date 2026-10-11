@@ -173,9 +173,6 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                             👑 _Для администраторов:_
                             🔹 /admin — панель администратора
                             🔹 /add — добавить хакатон или задачу (естественный язык)
-                            🔹 /stats — статистика по хакатонам, задачам, пользователям
-                            🔹 /users — список пользователей
-                            🔹 /broadcast — рассылка всем пользователям
                             
                             _Примеры для /add:_
                             • "Добавь хакатон AI Challenge, дедлайн 15.02.2025"
@@ -339,11 +336,6 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                             🔄 Задач в работе: %d
                             ⛔ Просроченных задач: %d
                             ⏰ Предстоящих напоминаний: %d
-                            
-                            _🛠 Доступные действия:_
-                            /stats — подробная статистика
-                            /users — список пользователей
-                            /broadcast — рассылка всем пользователям
                             
                             _📋 Управление хакатонами:_
                             /hackathons — список всех хакатонов
