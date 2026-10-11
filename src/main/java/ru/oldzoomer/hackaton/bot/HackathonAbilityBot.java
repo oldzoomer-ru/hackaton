@@ -21,6 +21,7 @@ import ru.oldzoomer.hackaton.entity.Task;
 import ru.oldzoomer.hackaton.entity.User;
 import ru.oldzoomer.hackaton.repository.ReminderRepository;
 import ru.oldzoomer.hackaton.repository.UserRepository;
+import ru.oldzoomer.hackaton.service.AiService;
 import ru.oldzoomer.hackaton.service.HackathonService;
 import ru.oldzoomer.hackaton.service.ReminderService;
 import ru.oldzoomer.hackaton.service.TaskService;
@@ -47,6 +48,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
     private final HackathonService hackathonService;
     private final TaskService taskService;
     private final ReminderService reminderService;
+    private final AiService aiService;
     private final UserRepository userRepository;
     private final ReminderRepository reminderRepository;
     private final BotConfig botConfig;
@@ -58,12 +60,14 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                                HackathonService hackathonService,
                                TaskService taskService,
                                ReminderService reminderService,
+                               AiService aiService,
                                UserRepository userRepository,
                                ReminderRepository reminderRepository) {
         super(client, botConfig.getUsername());
         this.hackathonService = hackathonService;
         this.taskService = taskService;
         this.reminderService = reminderService;
+        this.aiService = aiService;
         this.userRepository = userRepository;
         this.reminderRepository = reminderRepository;
         this.botConfig = botConfig;
@@ -86,7 +90,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .name("start")
                 .info("Welcome message and main menu")
                 .locality(Locality.ALL)
-.privacy(Privacy.PUBLIC)
+                .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
@@ -116,6 +120,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                             /hackathons — список активных хакатонов
                             /tasks — ваши задачи
                             /reminders — напоминания
+                            /add — добавить хакатон или задачу (естественный язык)
                             /help — справка
                             """;
 
@@ -129,7 +134,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .name("help")
                 .info("Show help and available commands")
                 .locality(Locality.ALL)
-.privacy(Privacy.PUBLIC)
+                .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
@@ -141,6 +146,11 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                             🔹 /hackathons — список активных и предстоящих хакатонов
                             🔹 /tasks — задачи: в работе и просроченные
                             🔹 /reminders — предстоящие напоминания
+                            🔹 /add — добавить хакатон или задачу (естественный язык)
+                            
+                            _Пример для /add:_
+                            • "Добавь хакатон AI Challenge, дедлайн 15.02.2025"
+                            • "Создай задачу написать документацию, исполнитель Alex, дедлайн 10.02"
                             """;
                     silent.sendMd(sb, chatId);
                 })
@@ -151,7 +161,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         return builder()
                 .name("hackathons")
                 .info("List active hackathons")
-.locality(Locality.USER)
+                .locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
@@ -187,7 +197,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         return builder()
                 .name("tasks")
                 .info("List in-progress and overdue tasks")
-.locality(Locality.USER)
+                .locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
@@ -236,7 +246,7 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         return builder()
                 .name("reminders")
                 .info("List pending reminders")
-.locality(Locality.USER)
+                .locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
@@ -264,9 +274,45 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .build();
     }
 
+    /**
+     * Add hackathon or task via natural language
+     */
+    public Ability naturalLanguageAddAbility() {
+        return builder()
+                .name("add")
+                .info("Add hackathon or task via natural language")
+                .locality(Locality.USER)
+                .privacy(Privacy.PUBLIC)
+                .action(m -> {
+                    long chatId = m.chatId();
+                    SilentSender silent = getSilent();
+
+                    String text = m.update().getMessage().getText();
+                    if (text == null || text.isBlank()) {
+                        silent.sendMd("""
+                                        ✍️ _Напишите, что нужно добавить. Например:
+                                        • "Добавь хакатон AI Challenge 2025, дедлайн 15.02.2025"
+                                        • "Создай задачу написать документацию, исполнитель Alex, дедлайн 10.02\"""",
+                                chatId);
+                        return;
+                    }
+
+                    try {
+                        String response = aiService.processNaturalLanguage(text);
+                        silent.sendMd(response, chatId);
+                    } catch (Exception e) {
+                        log.error("Error in add ability for user {}", chatId, e);
+                        silent.sendMd("❌ Ошибка при обработке запроса. Попробуйте переформулировать.", chatId);
+                    }
+                })
+                .build();
+    }
+
     // ==================== REPLIES ====================
 
-    /** Handle inline button callbacks */
+    /**
+     * Handle inline button callbacks
+     */
     public Reply inlineButtonReply() {
         return Reply.of((bot, update) -> {
             if (update.hasCallbackQuery()) {
@@ -339,7 +385,9 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         }, Update::hasCallbackQuery);
     }
 
-    /** Run every day at 10:00 Moscow time — send daily summary to all users */
+    /**
+     * Run every day at 10:00 Moscow time — send daily summary to all users
+     */
     @Scheduled(cron = "0 0 10 * * *")
     public void sendDailySummaries() {
         log.info("Running daily summaries at 10:00 MSK");
@@ -367,7 +415,9 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         }
     }
 
-    /** Check for pending reminders every 5 minutes */
+    /**
+     * Check for pending reminders every 5 minutes
+     */
     @Scheduled(cron = "0 */5 * * * *")
     public void checkPendingReminders() {
         LocalDateTime now = LocalDateTime.now();
@@ -389,7 +439,9 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         reminderRepository.cleanupOldExecuted(LocalDateTime.now().minusDays(30));
     }
 
-    /** Check for overdue tasks and ping daily */
+    /**
+     * Check for overdue tasks and ping daily
+     */
     @Scheduled(cron = "0 30 10 * * *")
     public void checkOverdueTasks() {
         log.info("Checking overdue tasks");
@@ -486,7 +538,9 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
         }
     }
 
-    /** Mask PII: show only last 4 digits of Telegram chat ID */
+    /**
+     * Mask PII: show only last 4 digits of Telegram chat ID
+     */
     private String maskChatId(Long chatId) {
         String id = String.valueOf(chatId);
         if (id.length() <= 4) return "****";

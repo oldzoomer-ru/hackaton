@@ -1,73 +1,75 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '4.1.1'
-	id 'io.spring.dependency-management' version '1.1.7'
-	id 'org.graalvm.buildtools.native' version '1.1.14'
+    id 'java'
+    id 'org.springframework.boot' version '4.1.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.graalvm.buildtools.native' version '1.1.14'
 }
 
 group = 'ru.oldzoomer'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(25)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 graalvmNative {
-	metadataRepository {
-		enabled = true
-	}
+    metadataRepository {
+        enabled = true
+    }
 
-	binaries {
-		main {
-			// Production-optimised defaults
-			buildArgs.add('-H:+ReportExceptionStackTraces')
-			buildArgs.add('-Os')
-			buildArgs.add('-H:+StripDebugInfo')
+    binaries {
+        main {
+            // Production-optimised defaults
+            buildArgs.add('-H:+ReportExceptionStackTraces')
+            buildArgs.add('-Os')
+            buildArgs.add('-H:+StripDebugInfo')
 
-			// PGO bootstrap property  (set -Pbootstrap for instrumented build)
-			if (project.hasProperty('bootstrap')) {
-				buildArgs.add('--pgo-instrument')
-			}
-			// PGO optimisation property  (set -Ppgo=/path/to/default.iprof)
-			if (project.hasProperty('pgo')) {
-				buildArgs.add("--pgo=${project.property('pgo')}")
-			}
+            // PGO bootstrap property  (set -Pbootstrap for instrumented build)
+            if (project.hasProperty('bootstrap')) {
+                buildArgs.add('--pgo-instrument')
+            }
+            // PGO optimisation property  (set -Ppgo=/path/to/default.iprof)
+            if (project.hasProperty('pgo')) {
+                buildArgs.add("--pgo=${project.property('pgo')}")
+            }
 
-			// Quick build for local development  (–no-fallback, –parallelism)
-			if (project.hasProperty('quickBuild')) {
-				buildArgs.add('-Ob')
-				buildArgs.add('--parallelism=2')
-			}
+            // Quick build for local development  (–no-fallback, –parallelism)
+            if (project.hasProperty('quickBuild')) {
+                buildArgs.add('-Ob')
+                buildArgs.add('--parallelism=2')
+            }
 
-			resources.autodetect()
-		}
-	}
+            resources.autodetect()
+        }
+    }
 }
 
 dependencies {
+    implementation platform('org.springframework.ai:spring-ai-bom:2.0.1')
     implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.telegram:telegrambots-springboot-longpolling-starter:10.3.0'
-	implementation 'org.telegram:telegrambots-abilities:10.3.0'
-	implementation 'org.telegram:telegrambots-client:10.3.0'
+    implementation 'org.telegram:telegrambots-springboot-longpolling-starter:10.3.0'
+    implementation 'org.telegram:telegrambots-abilities:10.3.0'
+    implementation 'org.telegram:telegrambots-client:10.3.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-liquibase'
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
     runtimeOnly 'org.postgresql:postgresql'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testCompileOnly 'org.projectlombok:lombok'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	testAnnotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testCompileOnly 'org.projectlombok:lombok'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

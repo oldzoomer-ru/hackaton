@@ -18,11 +18,20 @@ spring:
     serialization:
       write-dates-as-timestamps: false
 
+  # Spring AI (Cloud.ru Foundation Models - OpenAI compatible)
+  ai:
+    openai:
+      api-key: ${SPRING_AI_OPENAI_API_KEY}
+      base-url: ${SPRING_AI_OPENAI_BASE_URL:https://foundation-models.api.cloud.ru/v1}
+      chat:
+        options:
+          model: ${SPRING_AI_OPENAI_MODEL:Qwen/Qwen3-30B-A3B}
+
 # Telegram Bot Configuration
 telegram:
   bot:
     token: ${TELEGRAM_BOT_TOKEN}
     username: ${TELEGRAM_BOT_USERNAME}
     creator-id: ${TELEGRAM_CREATOR_ID}
-    proxy-url: ${TELEGRAM_PROXY_URL:}
-    telegram-api-endpoint: ${TELEGRAM_API_URL:}
+    proxy-url: ${TELEGRAM_PROXY_URL}
+    telegram-api-endpoint: ${TELEGRAM_API_URL}
