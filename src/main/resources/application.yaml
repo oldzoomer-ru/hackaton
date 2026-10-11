@@ -13,11 +13,6 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
 
-  # Jackson
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
-
   # Spring AI (Cloud.ru Foundation Models - OpenAI compatible)
   ai:
     openai:
