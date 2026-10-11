@@ -111,18 +111,28 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                                 });
                     }
 
+                    boolean isAdmin = creatorId() == chatId;
+
                     String sb = """
                             👋 _Добро пожаловать в бота хакатонов!_
                             
                             Я помогу вам следить за хакатонами, задачами и напоминаниями.
                             
-                            Доступные команды:
+                            _👥 Команды для всех:_
                             /hackathons — список активных хакатонов
                             /tasks — ваши задачи
                             /reminders — напоминания
-                            /add — добавить хакатон или задачу (естественный язык)
+                            /query — задать вопрос о хакатонах, задачах, напоминаниях
                             /help — справка
                             """;
+
+                    if (isAdmin) {
+                        sb += """
+                            
+                            _👑 Команды администратора:_
+                            /admin — панель администратора
+                            /add — добавить хакатон или задачу (естественный язык)""";
+                    }
 
                     silent.sendMd(sb, chatId);
                 })
@@ -138,20 +148,40 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .action(m -> {
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
+                    boolean isAdmin = creatorId() == chatId;
+
                     String sb = """
                             📖 _Справочник команд:_
                             
+                            👥 _Для всех пользователей:_
                             🔹 /start — приветствие и главное меню
                             🔹 /help — эта справка
                             🔹 /hackathons — список активных и предстоящих хакатонов
                             🔹 /tasks — задачи: в работе и просроченные
                             🔹 /reminders — предстоящие напоминания
-                            🔹 /add — добавить хакатон или задачу (естественный язык)
+                            🔹 /query — задать вопрос о хакатонах, задачах, напоминаниях
                             
-                            _Пример для /add:_
-                            • "Добавь хакатон AI Challenge, дедлайн 15.02.2025"
-                            • "Создай задачу написать документацию, исполнитель Alex, дедлайн 10.02"
+                            _Примеры для /query:_
+                            • "Какие хакатоны активны?"
+                            • "Какие задачи у Alex?"
+                            • "Какие задачи просрочены?"
                             """;
+
+                    if (isAdmin) {
+                        sb += """
+                            
+                            👑 _Для администраторов:_
+                            🔹 /admin — панель администратора
+                            🔹 /add — добавить хакатон или задачу (естественный язык)
+                            🔹 /stats — статистика по хакатонам, задачам, пользователям
+                            🔹 /users — список пользователей
+                            🔹 /broadcast — рассылка всем пользователям
+                            
+                            _Примеры для /add:_
+                            • "Добавь хакатон AI Challenge, дедлайн 15.02.2025"
+                            • "Создай задачу написать документацию, исполнитель Alex, дедлайн 10.02""";
+                    }
+
                     silent.sendMd(sb, chatId);
                 })
                 .build();
@@ -274,18 +304,75 @@ public class HackathonAbilityBot extends AbilityBot implements AbilityExtension 
                 .build();
     }
 
+    // ==================== ADMIN ABILITIES ====================
+
+    /**
+     * Admin panel — only accessible to bot creator
+     */
+    public Ability adminAbility() {
+        return builder()
+                .name("admin")
+                .info("Admin panel — bot creator only")
+                .locality(Locality.ALL)
+                .privacy(Privacy.PUBLIC)
+                .action(m -> {
+                    long chatId = m.chatId();
+                    SilentSender silent = getSilent();
+
+                    if (creatorId() != chatId) {
+                        silent.sendMd("🔒 _Доступ запрещён. Команда только для администратора._", chatId);
+                        return;
+                    }
+
+                    long totalUsers = userRepository.count();
+                    long totalHackathons = hackathonService.findAllActive().size();
+                    long inProgressTasks = taskService.findInProgress().size();
+                    long overdueTasks = taskService.findOverdue().size();
+                    long pendingReminders = reminderService.findPending().size();
+
+                    String sb = """
+                            👑 _ПАНЕЛЬ АДМИНИСТРАТОРА_
+                            
+                            _📊 Статистика:_
+                            👤 Зарегистрировано пользователей: %d
+                            🏆 Активных хакатонов: %d
+                            🔄 Задач в работе: %d
+                            ⛔ Просроченных задач: %d
+                            ⏰ Предстоящих напоминаний: %d
+                            
+                            _🛠 Доступные действия:_
+                            /stats — подробная статистика
+                            /users — список пользователей
+                            /broadcast — рассылка всем пользователям
+                            
+                            _📋 Управление хакатонами:_
+                            /hackathons — список всех хакатонов
+                            
+                            _📋 Управление задачами:_
+                            /tasks — все задачи
+                            """.formatted(totalUsers, totalHackathons, inProgressTasks, overdueTasks, pendingReminders);
+                    silent.sendMd(sb, chatId);
+                })
+                .build();
+    }
+
     /**
      * Add hackathon or task via natural language
      */
     public Ability naturalLanguageAddAbility() {
         return builder()
                 .name("add")
-                .info("Add hackathon or task via natural language")
+                .info("Add hackathon or task via natural language — admin only")
                 .locality(Locality.USER)
                 .privacy(Privacy.PUBLIC)
                 .action(m -> {
                     long chatId = m.chatId();
                     SilentSender silent = getSilent();
+
+                    if (creatorId() != chatId) {
+                        silent.sendMd("🔒 _Доступ запрещён. Команда /add только для администратора._", chatId);
+                        return;
+                    }
 
                     String text = m.update().getMessage().getText();
                     if (text == null || text.isBlank()) {
