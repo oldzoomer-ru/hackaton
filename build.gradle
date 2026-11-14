@@ -51,7 +51,7 @@ graalvmNative {
 }
 
 dependencies {
-    implementation platform('org.springframework.ai:spring-ai-bom:2.0.1')
+    implementation platform('org.springframework.ai:spring-ai-bom:2.0.2')
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.telegram:telegrambots-springboot-longpolling-starter:10.3.0'
     implementation 'org.telegram:telegrambots-abilities:10.3.0'
